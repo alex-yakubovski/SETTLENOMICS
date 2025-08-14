@@ -6,94 +6,93 @@
 <title>The Settlonomics Review</title>
 <style>
     body {
-        margin: 0;
-        font-family: "Georgia", serif;
-        background-color: #f8f6f3;
+        font-family: 'Georgia', serif;
+        background-color: #f9f8f6;
         color: #222;
-        line-height: 1.6;
+        margin: 0;
+        padding: 0;
     }
     header {
-        background-color: #e1dfdb;
-        padding: 1rem;
+        background: #e3ded7;
+        padding: 20px;
         text-align: center;
-        border-bottom: 3px solid #c4c0ba;
+        border-bottom: 3px solid #b1aaa0;
     }
     header h1 {
         margin: 0;
         font-size: 2.5rem;
-        font-weight: bold;
         letter-spacing: 2px;
     }
-    .motto {
-        background-color: #f0ede8;
-        padding: 2rem 1rem;
+    .intro {
+        max-width: 900px;
+        margin: 40px auto;
         text-align: center;
-        border-bottom: 2px solid #c4c0ba;
+        padding: 20px;
+        line-height: 1.6;
+        border: 2px solid #b1aaa0;
+        background-color: #f4f1ed;
     }
-    .motto p {
-        max-width: 700px;
-        margin: auto;
-        font-size: 1.2rem;
-    }
-    .articles {
+    .grid {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 1.5rem;
-        padding: 2rem;
-    }
-    @media (max-width: 768px) {
-        .articles {
-            grid-template-columns: 1fr;
-        }
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+        max-width: 1200px;
+        margin: 40px auto;
+        padding: 0 20px;
     }
     .card {
-        background-color: #f3f1ee;
-        border: 2px solid #c4c0ba;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-        overflow: hidden;
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        border: 2px solid #b1aaa0;
+        background: #fff;
+        display: flex;
+        flex-direction: column;
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
     }
     .card:hover {
-        transform: translateY(-6px);
-        box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+        transform: translateY(-5px);
+        box-shadow: 0px 6px 18px rgba(0,0,0,0.15);
     }
-    .image {
+    .image-placeholder {
+        background: linear-gradient(135deg, #dcd3c3, #c5bcae);
         height: 180px;
-        background: linear-gradient(135deg, #d8d4cf, #eae6e0);
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 1.5rem;
+        font-size: 1.2rem;
+        color: #4a443d;
         font-weight: bold;
-        color: #7a766f;
-        border-bottom: 2px solid #c4c0ba;
+        border-bottom: 2px solid #b1aaa0;
     }
-    .content {
-        padding: 1rem;
+    .card-content {
+        padding: 15px;
+        flex: 1;
     }
-    .content h3 {
+    .card-content h3 {
         margin-top: 0;
         font-size: 1.1rem;
-        color: #333;
     }
-    .content p {
-        font-size: 0.95rem;
-        color: #555;
+    .card-content p {
+        font-size: 0.9rem;
+        line-height: 1.4;
+        color: #444;
     }
     .ad-banner {
-        background-color: #e7e3dd;
+        background: #dcd3c3;
+        padding: 40px;
         text-align: center;
-        padding: 1.5rem;
-        margin: 2rem;
-        border: 2px dashed #b6b2ac;
-        font-style: italic;
+        margin: 40px auto;
+        max-width: 900px;
+        border: 2px solid #b1aaa0;
+        font-size: 1.2rem;
+        font-weight: bold;
+        letter-spacing: 1px;
+        color: #4a443d;
     }
     footer {
-        background-color: #e1dfdb;
-        padding: 1rem;
+        background: #e3ded7;
         text-align: center;
+        padding: 20px;
         font-size: 0.9rem;
-        border-top: 3px solid #c4c0ba;
+        border-top: 3px solid #b1aaa0;
     }
 </style>
 </head>
@@ -103,85 +102,87 @@
     <h1>The Settlonomics Review</h1>
 </header>
 
-<section class="motto">
-    <p>Exploring the economics of settlement, migration, and the evolving cultural landscapes of our interconnected world.</p>
+<section class="intro">
+    <h2>Exploring the Economics of Settlement</h2>
+    <p>The Settlonomics Review is a scholarly publication dedicated to exploring the intersection of migration, urban development, and economic dynamics. We analyze trends, share insights, and promote informed discourse for policymakers, researchers, and global citizens alike.</p>
 </section>
 
-<section class="articles">
+<section class="grid">
     <div class="card">
-        <div class="image">Article 1</div>
-        <div class="content">
-            <h3>Urban Growth Trends in 2025</h3>
-            <p>Analyzing migration flows and their impact on housing markets across major cities.</p>
+        <div class="image-placeholder">Image 1</div>
+        <div class="card-content">
+            <h3>Article Title One</h3>
+            <p>Brief description of the article that engages the reader while remaining concise and informative.</p>
         </div>
     </div>
     <div class="card">
-        <div class="image">Article 2</div>
-        <div class="content">
-            <h3>Global Taxation Shifts</h3>
-            <p>How governments adapt fiscal policies to attract talent and capital in the post-digital age.</p>
+        <div class="image-placeholder">Image 2</div>
+        <div class="card-content">
+            <h3>Article Title Two</h3>
+            <p>Short teaser for the second featured article, touching on its main subject and perspective.</p>
         </div>
     </div>
     <div class="card">
-        <div class="image">Article 3</div>
-        <div class="content">
-            <h3>Reshaping Cultural Identities</h3>
-            <p>The role of urban centers in preserving heritage while embracing change.</p>
+        <div class="image-placeholder">Image 3</div>
+        <div class="card-content">
+            <h3>Article Title Three</h3>
+            <p>Introduction to the content, giving just enough detail to intrigue without revealing too much.</p>
         </div>
     </div>
     <div class="card">
-        <div class="image">Article 4</div>
-        <div class="content">
-            <h3>Infrastructure as a Magnet</h3>
-            <p>Why high-speed rail and broadband are shaping new hubs of opportunity.</p>
+        <div class="image-placeholder">Image 4</div>
+        <div class="card-content">
+            <h3>Article Title Four</h3>
+            <p>Analytical insights into pressing settlement issues with a focus on socio-economic factors.</p>
         </div>
     </div>
     <div class="card">
-        <div class="image">Article 5</div>
-        <div class="content">
-            <h3>Climate Migration Patterns</h3>
-            <p>Examining shifts in population due to environmental changes and resilience planning.</p>
+        <div class="image-placeholder">Image 5</div>
+        <div class="card-content">
+            <h3>Article Title Five</h3>
+            <p>Coverage of recent developments in urban planning and their broader economic implications.</p>
         </div>
     </div>
     <div class="card">
-        <div class="image">Article 6</div>
-        <div class="content">
-            <h3>Digital Nomad Economies</h3>
-            <p>How transient workforces are reshaping local economies and housing demands.</p>
+        <div class="image-placeholder">Image 6</div>
+        <div class="card-content">
+            <h3>Article Title Six</h3>
+            <p>A concise preview of an in-depth report on migration trends and related policy debates.</p>
         </div>
     </div>
     <div class="card">
-        <div class="image">Article 7</div>
-        <div class="content">
-            <h3>Legal Pathways to Residency</h3>
-            <p>Comparing immigration frameworks across continents in 2025.</p>
+        <div class="image-placeholder">Image 7</div>
+        <div class="card-content">
+            <h3>Article Title Seven</h3>
+            <p>Exploring the role of culture and heritage in shaping urban settlement landscapes.</p>
         </div>
     </div>
     <div class="card">
-        <div class="image">Article 8</div>
-        <div class="content">
-            <h3>Urban Crime and Security</h3>
-            <p>Balancing safety, privacy, and civil liberties in modern metropolises.</p>
+        <div class="image-placeholder">Image 8</div>
+        <div class="card-content">
+            <h3>Article Title Eight</h3>
+            <p>Insights from experts on sustainable housing solutions for rapidly growing cities.</p>
         </div>
     </div>
     <div class="card">
-        <div class="image">Article 9</div>
-        <div class="content">
-            <h3>Work-Life Geography</h3>
-            <p>Mapping the balance between productivity and quality of life in different cities.</p>
+        <div class="image-placeholder">Image 9</div>
+        <div class="card-content">
+            <h3>Article Title Nine</h3>
+            <p>An engaging look at demographic shifts and their impact on local economies.</p>
         </div>
     </div>
 </section>
 
 <div class="ad-banner">
-    Advertisement Space — Your brand here
+    [Advertisement Banner Space]
 </div>
 
 <footer>
-    &copy; 2025 The Settlonomics Review — All rights reserved.
+    © 2025 The Settlonomics Review. All rights reserved.
 </footer>
 
 </body>
 </html>
+
 
 
