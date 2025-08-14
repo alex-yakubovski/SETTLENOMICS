@@ -5,28 +5,31 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Settlonomics Review</title>
 <style>
-/* ===== Base ===== */
 body {
     margin: 0;
     font-family: "Inter", "Segoe UI", sans-serif;
-    background-color: #f9f9f9;
+    background-color: #f5f5f5;
     color: #1a2a6c;
     line-height: 1.6;
 }
 h1,h2,h3 { margin:0; font-weight:600; }
 a { text-decoration: none; color: inherit; }
 
-/* ===== Header ===== */
+/* Header */
 header {
     background-color: #ffffff;
     padding: 1.5rem 1rem;
     text-align: center;
-    border-bottom: 2px solid #4a90e2;
+    border-bottom: 2px solid #6b1f2d;
 }
 header h1 {
-    font-size: 2.2rem;
-    color: #6b1f2d; /* глубокий бордовый цвет названия */
+    font-size: 2.4rem;
+    color: #6b1f2d;
     letter-spacing: 1px;
+    transition: all 0.4s ease;
+}
+header h1:hover {
+    transform: scale(1.05);
 }
 nav {
     margin-top: 0.5rem;
@@ -37,128 +40,127 @@ nav a {
     font-weight: 600;
     color: #1a2a6c;
     position: relative;
+    display: inline-block;
+    padding-bottom: 2px;
 }
 nav a::after {
-    content: '';
-    display: block;
-    width: 100%;
-    height: 33%; /* накрывает треть текста снизу */
-    background: #a8d5a2; /* бледно-зеленый */
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    transform: scaleY(0);
-    transform-origin: bottom;
-    transition: transform 0.3s ease;
-    z-index: -1;
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:0;
+    height:33%;
+    width:100%;
+    background-color:#a8d5a2;
+    transform:scaleY(0);
+    transform-origin:bottom;
+    transition:transform 0.3s ease;
+    z-index:-1;
 }
-nav a:hover::after { transform: scaleY(1); }
+nav a:hover::after {
+    transform:scaleY(1);
+}
 
-/* ===== Hero ===== */
+/* Hero */
 .hero {
     padding: 2rem 1rem;
     text-align: center;
     background-color: #1a2a6c;
-    border-bottom: 2px solid #4a90e2;
+    border-bottom: 2px solid #6b1f2d;
 }
 .hero h2 { font-size: 1.8rem; color: #f9f9f9; margin-bottom: 1rem; }
 .hero p { max-width: 700px; margin: 0 auto; font-size: 1.05rem; color: #dce0f0; }
 
-/* ===== Articles Grid ===== */
+/* Articles */
 .articles {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3,1fr);
     gap: 1.5rem;
-    max-width: 1200px;
-    margin: 2rem auto;
-    padding: 0 1rem;
+    max-width:1200px;
+    margin:2rem auto;
+    padding:0 1rem;
 }
-@media (max-width: 768px) {
-    .articles { grid-template-columns: 1fr; }
-}
+@media(max-width:768px){.articles{grid-template-columns:1fr;}}
 .card {
-    background-color: #ffffff;
-    border: 1px solid #4a90e2;
-    display: flex;
-    flex-direction: column;
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    background-color:#ffffff;
+    border:1px solid #e0e0e0;
+    display:flex;
+    flex-direction:column;
+    transition:transform 0.3s ease, box-shadow 0.3s ease;
 }
 .card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 8px 20px rgba(74,144,226,0.2);
+    transform: translateY(-8px);
+    box-shadow:0 12px 25px rgba(0,0,0,0.12);
 }
 .card-img {
-    background-color: #e6f0ff;
-    height: 160px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    color: #4a90e2;
-    font-size: 1rem;
-    border-bottom: 1px solid #4a90e2;
+    background-color:#f0f4ff;
+    height:160px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:bold;
+    color:#1a2a6c;
+    font-size:1rem;
+    border-bottom:1px solid #d0d4e0;
 }
 .card-content {
-    padding: 1rem;
+    padding:1rem;
 }
-.card-content h3 { font-size: 1.15rem; color: #1a2a6c; margin-bottom:0.5rem; }
-.card-content p { font-size: 0.95rem; color: #1a2a6c; }
+.card-content h3 { font-size:1.2rem; color:#1a2a6c; margin-bottom:0.5rem; }
+.card-content p { font-size:0.95rem; color:#1a2a6c; }
 
-/* ===== Ad Banner ===== */
+/* Ad Banner */
 .ad-banner {
-    max-width: 1200px;
-    margin: 2rem auto;
-    padding: 1.5rem;
-    text-align: center;
-    background-color: #ffffff;
-    border: 2px dashed #4a90e2;
-    font-style: italic;
-    color: #4a90e2;
+    max-width:1200px;
+    margin:2rem auto;
+    padding:1.5rem;
+    text-align:center;
+    background-color:#ffffff;
+    border:2px dashed #6b1f2d;
+    font-style:italic;
+    color:#6b1f2d;
 }
 
-/* ===== Footer ===== */
+/* Footer */
 footer {
-    background-color: #ffffff;
-    padding: 1.5rem;
-    text-align: center;
-    font-size: 0.9rem;
-    color: #4a90e2;
-    border-top: 2px solid #4a90e2;
+    background-color:#ffffff;
+    padding:1.5rem;
+    text-align:center;
+    font-size:0.9rem;
+    color:#6b1f2d;
+    border-top:2px solid #6b1f2d;
 }
 </style>
 </head>
 <body>
 
 <header>
-    <h1>The Settlonomics Review</h1>
-    <nav>
-        <a href="#">Home</a>
-        <a href="#">Articles</a>
-        <a href="#">About</a>
-        <a href="#">Contact</a>
-    </nav>
+<h1>The Settlonomics Review</h1>
+<nav>
+    <a href="#">Home</a>
+    <a href="#">Articles</a>
+    <a href="#">About</a>
+    <a href="#">Contact</a>
+</nav>
 </header>
 
 <section class="hero">
-    <h2>Exploring the Economics of Settlement</h2>
-    <p>The Settlonomics Review delivers modern, insightful analysis of migration, urban planning, and socio-economic systems in a clear, elegant format.</p>
+<h2>Exploring the Economics of Settlement</h2>
+<p>The Settlonomics Review delivers modern, insightful analysis of migration, urban planning, and socio-economic systems in a clear, elegant format.</p>
 </section>
 
-<section class="articles" id="articles">
-    <!-- Articles generated by JS -->
-</section>
+<section class="articles" id="articles"></section>
 
 <div class="ad-banner">
-    [ Advertisement Space ]
+[ Advertisement Space ]
 </div>
 
 <footer>
-    &copy; 2025 The Settlonomics Review — All Rights Reserved
+&copy; 2025 The Settlonomics Review — All Rights Reserved
 </footer>
 
 <script>
 const container = document.getElementById('articles');
-const articles = [
+const articles=[
     {title:"Urban Growth Trends", text:"Examining rapid expansion of metropolitan areas."},
     {title:"Migration Patterns", text:"How cross-border movements shape economies."},
     {title:"Housing Market Shifts", text:"Impact of remote work on housing demand."},
@@ -169,23 +171,22 @@ const articles = [
     {title:"Business Ecosystems", text:"Entrepreneurship hubs in post-industrial cities."},
     {title:"Global Mobility Future", text:"Visions for a borderless workforce."}
 ];
-
 articles.forEach(a=>{
-    const card = document.createElement('div');
+    const card=document.createElement('div');
     card.className='card';
     card.innerHTML=`
-        <div class="card-img">Image</div>
-        <div class="card-content">
-            <h3>${a.title}</h3>
-            <p>${a.text}</p>
-        </div>
-    `;
+    <div class="card-img">Image</div>
+    <div class="card-content">
+        <h3>${a.title}</h3>
+        <p>${a.text}</p>
+    </div>`;
     container.appendChild(card);
 });
 </script>
 
 </body>
 </html>
+
 
 
 
