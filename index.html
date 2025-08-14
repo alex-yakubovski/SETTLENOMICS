@@ -39,13 +39,14 @@ nav a {
     position: relative;
     display: inline-block;
     padding-bottom: 2px;
+    overflow: hidden;
 }
 nav a::after {
     content:"";
     position:absolute;
     left:0;
     bottom:0;
-    height:33%;
+    height:50%; /* половина текста */
     width:100%;
     background-color:#a8d5a2;
     transform:scaleY(0);
@@ -180,6 +181,7 @@ articles.forEach(a=>{
 
 </body>
 </html>
+
 
 
 
