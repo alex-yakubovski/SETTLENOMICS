@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Settlonomics Review</title>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fdfdfd;
+            color: #222;
+        }
+        header {
+            background-color: #0f1b2b;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 10px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 0.95em;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        .title-section {
+            padding: 40px 20px;
+            text-align: center;
+            background-color: #f5f5f5;
+        }
+        .title-section h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        .title-section p {
+            margin-top: 10px;
+            font-size: 1.2em;
+            color: #555;
+        }
+        .intro {
+            padding: 30px 20px;
+            max-width: 900px;
+            margin: auto;
+            font-size: 1.1em;
+            line-height: 1.6;
+        }
+        .articles {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            padding: 30px 20px;
+            background-color: #fafafa;
+        }
+        .article-card {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.2s;
+        }
+        .article-card:hover {
+            transform: translateY(-4px);
+        }
+        .article-card img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+        }
+        .article-card h3 {
+            font-size: 1.1em;
+            margin: 15px;
+        }
+        .article-card p {
+            margin: 0 15px 15px;
+            color: #666;
+            font-size: 0.95em;
+            flex-grow: 1;
+        }
+        .banner {
+            padding: 20px;
+            background-color: #eaeaea;
+            text-align: center;
+            margin: 30px 0;
+            font-style: italic;
+            border: 1px dashed #ccc;
+        }
+        footer {
+            background-color: #0f1b2b;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 0.9em;
+        }
+        @media (max-width: 600px) {
+            .title-section h1 {
+                font-size: 1.8em;
+            }
+            nav {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div>The Settlonomics Review</div>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">Articles</a>
+            <a href="#">Research</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+        </nav>
+    </header>
+
+    <section class="title-section">
+        <h1>The Settlonomics Review</h1>
+        <p>Exploring the Economics of Settlement, Relocation, and Urban Development</p>
+    </section>
+
+    <section class="intro">
+        <p>
+            The Settlonomics Review is an independent academic-style journal dedicated to 
+            analyzing settlement patterns, relocation trends, and the economic, cultural, 
+            and policy factors shaping our cities. Our mission is to provide deep insights 
+            for decision-makers, researchers, and globally-minded citizens.
+        </p>
+    </section>
+
+    <section class="articles">
+        <div class="article-card">
+            <img src="https://via.placeholder.com/400x200" alt="Article">
+            <h3>Urban Migration Patterns</h3>
+            <p>Latest insights on how people are moving between global cities and rural areas.</p>
+        </div>
+        <div class="article-card">
+            <img src="https://via.placeholder.com/400x200" alt="Article">
+            <h3>Economic Impact of Relocation</h3>
+            <p>Exploring how relocation trends influence housing markets and infrastructure.</p>
+        </div>
+        <div class="article-card">
+            <img src="https://via.placeholder.com/400x200" alt="Article">
+            <h3>Settlement Policy Reforms</h3>
+            <p>A deep dive into the latest legislative changes affecting settlement strategies.</p>
+        </div>
+        <div class="article-card">
+            <img src="https://via.placeholder.com/400x200" alt="Article">
+            <h3>Cultural Integration Dynamics</h3>
+            <p>How newcomers adapt and contribute to the cultural fabric of cities.</p>
+        </div>
+        <div class="article-card">
+            <img src="https://via.placeholder.com/400x200" alt="Article">
+            <h3>Global Relocation Trends</h3>
+            <p>Statistical breakdowns of the most popular relocation destinations.</p>
+        </div>
+        <div class="article-card">
+            <img src="https://via.placeholder.com/400x200" alt="Article">
+            <h3>Infrastructure & Growth</h3>
+            <p>The role of public works in enabling sustainable settlement expansion.</p>
+        </div>
+        <div class="article-card">
+            <img src="https://via.placeholder.com/400x200" alt="Article">
+            <h3>Housing Affordability</h3>
+            <p>Economic models for predicting and improving housing affordability.</p>
+        </div>
+        <div class="article-card">
+            <img src="https://via.placeholder.com/400x200" alt="Article">
+            <h3>Climate Migration</h3>
+            <p>Understanding how environmental factors influence migration flows.</p>
+        </div>
+        <div class="article-card">
+            <img src="https://via.placeholder.com/400x200" alt="Article">
+            <h3>Remote Work & Mobility</h3>
+            <p>How digital work trends are changing the nature of where we live.</p>
+        </div>
+    </section>
+
+    <div class="banner">
+        Advertisement Banner Space (Placeholder)
+    </div>
+
+    <footer>
+        &copy; 2025 The Settlonomics Review. All rights reserved.
+    </footer>
+</body>
+</html>
+
