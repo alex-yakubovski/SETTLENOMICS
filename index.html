@@ -10,7 +10,7 @@ body {
     margin: 0;
     font-family: "Inter", "Segoe UI", sans-serif;
     background-color: #f9f9f9;
-    color: #1a2a6c; /* темно-синий текст */
+    color: #1a2a6c;
     line-height: 1.6;
 }
 h1,h2,h3 { margin:0; font-weight:600; }
@@ -25,7 +25,7 @@ header {
 }
 header h1 {
     font-size: 2.2rem;
-    color: #4a90e2;
+    color: #6b1f2d; /* глубокий бордовый цвет названия */
     letter-spacing: 1px;
 }
 nav {
@@ -41,24 +41,27 @@ nav a {
 nav a::after {
     content: '';
     display: block;
-    width: 0%;
-    height: 2px;
-    background: #4a90e2;
-    transition: width 0.3s;
+    width: 100%;
+    height: 33%; /* накрывает треть текста снизу */
+    background: #a8d5a2; /* бледно-зеленый */
     position: absolute;
-    bottom: -4px;
+    bottom: 0;
     left: 0;
+    transform: scaleY(0);
+    transform-origin: bottom;
+    transition: transform 0.3s ease;
+    z-index: -1;
 }
-nav a:hover::after { width: 100%; }
+nav a:hover::after { transform: scaleY(1); }
 
 /* ===== Hero ===== */
 .hero {
     padding: 2rem 1rem;
     text-align: center;
-    background-color: #1a2a6c; /* тёмный фон дивайдера */
+    background-color: #1a2a6c;
     border-bottom: 2px solid #4a90e2;
 }
-.hero h2 { font-size: 1.8rem; color: #f9f9f9; margin-bottom: 1rem; } /* светлый текст */
+.hero h2 { font-size: 1.8rem; color: #f9f9f9; margin-bottom: 1rem; }
 .hero p { max-width: 700px; margin: 0 auto; font-size: 1.05rem; color: #dce0f0; }
 
 /* ===== Articles Grid ===== */
@@ -183,6 +186,7 @@ articles.forEach(a=>{
 
 </body>
 </html>
+
 
 
 
