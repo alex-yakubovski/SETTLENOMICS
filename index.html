@@ -26,8 +26,11 @@ header {
 header h1 {
     font-size: 2.4rem;
     color: #1a2a6c;
-    letter-spacing: 1px;}
-
+    letter-spacing: 1px;
+}
+nav {
+    margin-top: 0.5rem;
+}
 nav a {
     position: relative;
     display: inline-block;
@@ -38,20 +41,18 @@ nav a {
     padding-bottom: 2px;
     overflow: hidden;
 }
-
 nav a::after {
     content: "";
     position: absolute;
     left: 0;
     bottom: 0;
-    height: 50%;                     /* половина текста */
-    width: 0;                        /* по умолчанию скрыто */
-    background-color: rgba(168, 213, 162, 0.5); /* полупрозрачный бледно-зелёный */
+    width: 0;              
+    height: 50%;           
+    background-color: rgba(168, 213, 162, 0.5); 
     transition: width 0.3s ease;
 }
-
 nav a:hover::after {
-    width: 100%;                      /* выезжает слева направо */
+    width: 100%;
 }
 
 /* Hero */
@@ -78,16 +79,14 @@ nav a:hover::after {
     display: flex;
     flex-direction: column;
     border-radius: 0;
-    opacity: 0;               /* изначально невидимы */
-    transform: translateY(20px); /* смещены вниз */
-    transition: transform 0.6s ease, opacity 0.6s ease, box-shadow 0.3s ease;
+    opacity: 0;               
+    transform: translateY(20px); 
+    transition: transform 0.6s ease, opacity 0.6s ease, box-shadow 0.3s ease, background 0.3s ease;
 }
-
 .card.visible {
     opacity: 1;
     transform: translateY(0);
 }
-
 .card:hover {
     box-shadow: 0 15px 35px rgba(0,0,0,0.15);
     background: linear-gradient(180deg, #ffffff 0%, #f0f4ff 100%);
@@ -132,7 +131,6 @@ footer {
     border-top:1px solid #cccccc;
 }
 </style>
-
 </head>
 <body>
 
@@ -162,19 +160,7 @@ footer {
 </footer>
 
 <script>
-
-// функция для появления карточек при скролле
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if(entry.isIntersecting){
-            entry.target.classList.add('visible');
-            observer.unobserve(entry.target);
-        }
-    });
-}, { threshold: 0.1 });
-
-document.querySelectorAll('.card').forEach(card => observer.observe(card));
-
+// создаём карточки
 const container = document.getElementById('articles');
 const articles=[
     {title:"Urban Growth Trends", text:"Examining rapid expansion of metropolitan areas."},
@@ -187,17 +173,30 @@ const articles=[
     {title:"Business Ecosystems", text:"Entrepreneurship hubs in post-industrial cities."},
     {title:"Global Mobility Future", text:"Visions for a borderless workforce."}
 ];
+
 articles.forEach(a=>{
     const card=document.createElement('div');
     card.className='card';
     card.innerHTML=`
-    <div class="card-img">Image</div>
-    <div class="card-content">
-        <h3>${a.title}</h3>
-        <p>${a.text}</p>
-    </div>`;
+        <div class="card-img">Image</div>
+        <div class="card-content">
+            <h3>${a.title}</h3>
+            <p>${a.text}</p>
+        </div>`;
     container.appendChild(card);
 });
+
+// эффект появления при скролле
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if(entry.isIntersecting){
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.card').forEach(card => observer.observe(card));
 </script>
 
 </body>
