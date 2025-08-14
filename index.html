@@ -132,19 +132,7 @@ footer {
     border-top:1px solid #cccccc;
 }
 </style>
-<script>
-// функция для появления карточек при скролле
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if(entry.isIntersecting){
-            entry.target.classList.add('visible');
-            observer.unobserve(entry.target);
-        }
-    });
-}, { threshold: 0.1 });
 
-document.querySelectorAll('.card').forEach(card => observer.observe(card));
-</script>
 </head>
 <body>
 
@@ -174,29 +162,17 @@ document.querySelectorAll('.card').forEach(card => observer.observe(card));
 </footer>
 
 <script>
-const container = document.getElementById('articles');
-const articles=[
-    {title:"Urban Growth Trends", text:"Examining rapid expansion of metropolitan areas."},
-    {title:"Migration Patterns", text:"How cross-border movements shape economies."},
-    {title:"Housing Market Shifts", text:"Impact of remote work on housing demand."},
-    {title:"Tax Policy Impacts", text:"Fiscal incentives for attracting residents."},
-    {title:"Cultural Integration", text:"Role of language and tradition in cities."},
-    {title:"Infrastructure Investments", text:"Smart city technologies reshaping living spaces."},
-    {title:"Climate Relocation", text:"Predicting settlement shifts due to climate."},
-    {title:"Business Ecosystems", text:"Entrepreneurship hubs in post-industrial cities."},
-    {title:"Global Mobility Future", text:"Visions for a borderless workforce."}
-];
-articles.forEach(a=>{
-    const card=document.createElement('div');
-    card.className='card';
-    card.innerHTML=`
-    <div class="card-img">Image</div>
-    <div class="card-content">
-        <h3>${a.title}</h3>
-        <p>${a.text}</p>
-    </div>`;
-    container.appendChild(card);
-});
+// функция для появления карточек при скролле
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if(entry.isIntersecting){
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.card').forEach(card => observer.observe(card));
 </script>
 
 </body>
