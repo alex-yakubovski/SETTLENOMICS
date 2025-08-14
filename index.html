@@ -10,7 +10,7 @@ body {
     margin: 0;
     font-family: "Inter", "Segoe UI", sans-serif;
     background-color: #f9f9f9;
-    color: #333;
+    color: #1a2a6c; /* темно-синий текст */
     line-height: 1.6;
 }
 h1,h2,h3 { margin:0; font-weight:600; }
@@ -35,7 +35,7 @@ nav a {
     margin: 0 1rem;
     font-size: 0.95rem;
     font-weight: 600;
-    color: #333;
+    color: #1a2a6c;
     position: relative;
 }
 nav a::after {
@@ -55,11 +55,11 @@ nav a:hover::after { width: 100%; }
 .hero {
     padding: 2rem 1rem;
     text-align: center;
-    background-color: #ffffff;
+    background-color: #1a2a6c; /* тёмный фон дивайдера */
     border-bottom: 2px solid #4a90e2;
 }
-.hero h2 { font-size: 1.8rem; color: #4a90e2; margin-bottom: 1rem; }
-.hero p { max-width: 700px; margin: 0 auto; font-size: 1.05rem; color: #555; }
+.hero h2 { font-size: 1.8rem; color: #f9f9f9; margin-bottom: 1rem; } /* светлый текст */
+.hero p { max-width: 700px; margin: 0 auto; font-size: 1.05rem; color: #dce0f0; }
 
 /* ===== Articles Grid ===== */
 .articles {
@@ -75,14 +75,14 @@ nav a:hover::after { width: 100%; }
 }
 .card {
     background-color: #ffffff;
-    border: 1px solid #e0e0e0;
+    border: 1px solid #4a90e2;
     display: flex;
     flex-direction: column;
     transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 .card:hover {
     transform: translateY(-6px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    box-shadow: 0 8px 20px rgba(74,144,226,0.2);
 }
 .card-img {
     background-color: #e6f0ff;
@@ -98,8 +98,8 @@ nav a:hover::after { width: 100%; }
 .card-content {
     padding: 1rem;
 }
-.card-content h3 { font-size: 1.15rem; color: #4a90e2; margin-bottom:0.5rem; }
-.card-content p { font-size: 0.95rem; color: #555; }
+.card-content h3 { font-size: 1.15rem; color: #1a2a6c; margin-bottom:0.5rem; }
+.card-content p { font-size: 0.95rem; color: #1a2a6c; }
 
 /* ===== Ad Banner ===== */
 .ad-banner {
@@ -183,6 +183,7 @@ articles.forEach(a=>{
 
 </body>
 </html>
+
 
 
 
