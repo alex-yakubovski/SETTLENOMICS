@@ -5,29 +5,27 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Settlonomics Review</title>
 <style>
-    /* ===== Base Styles ===== */
+    /* ===== Base ===== */
     body {
         margin: 0;
         font-family: "Georgia", serif;
-        background-color: #f7f5f2;
-        color: #1f1f1f;
+        background-color: #f5f3ef;
+        color: #222;
         line-height: 1.6;
     }
-    h1, h2, h3 {
-        font-weight: 600;
-        margin: 0 0 0.5em 0;
-    }
+    h1,h2,h3 { margin:0; font-weight:600; }
     a { text-decoration: none; color: inherit; }
 
     /* ===== Header ===== */
     header {
-        background-color: #e4ded7;
-        padding: 1.5rem;
+        background-color: #e3d9c5;
+        padding: 1.5rem 1rem;
         text-align: center;
-        border-bottom: 4px solid #b3a89e;
+        border-bottom: 3px solid #bfa980;
     }
     header h1 {
         font-size: 2.2rem;
+        color: #1a1f4b;
         letter-spacing: 1px;
     }
     nav {
@@ -37,83 +35,93 @@
         margin: 0 1rem;
         font-size: 0.95rem;
         text-transform: uppercase;
+        font-weight: bold;
+        color: #1a1f4b;
+        position: relative;
     }
+    nav a::after {
+        content: '';
+        display: block;
+        width: 0%;
+        height: 2px;
+        background: #bfa980;
+        transition: width 0.3s;
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+    }
+    nav a:hover::after { width: 100%; }
 
     /* ===== Hero ===== */
     .hero {
         padding: 2rem 1rem;
         text-align: center;
-        background-color: #f0ece7;
-        border-bottom: 4px solid #b3a89e;
+        background-color: #f0ebe1;
+        border-bottom: 3px solid #bfa980;
     }
-    .hero h2 {
-        font-size: 1.8rem;
-        margin-bottom: 1rem;
-    }
-    .hero p {
-        max-width: 700px;
-        margin: 0 auto;
-        font-size: 1.05rem;
-    }
+    .hero h2 { font-size: 1.8rem; color: #1a1f4b; margin-bottom: 1rem;}
+    .hero p { max-width: 700px; margin: 0 auto; font-size: 1.05rem; color: #333; }
 
     /* ===== Articles Grid ===== */
     .articles {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 1.2rem;
-        padding: 2rem;
+        max-width: 1000px;
+        margin: 2rem auto;
+        padding: 0 1rem;
     }
     @media (max-width: 768px) {
-        .articles {
-            grid-template-columns: 1fr;
-        }
+        .articles { grid-template-columns: 1fr; }
     }
     .card {
-        background-color: #ffffff;
-        border: 1px solid #b3a89e;
-        overflow: hidden;
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        background-color: #fff8f0;
+        border: 1px solid #bfa980;
+        display: flex;
+        flex-direction: column;
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
     }
     .card:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+        transform: translateY(-5px);
+        box-shadow: 0 8px 18px rgba(0,0,0,0.15);
     }
     .card-img {
-        background: linear-gradient(135deg, #cfc7bf, #e4ded7);
+        background: linear-gradient(135deg, #e6d6b8, #f0e8dc);
         height: 160px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        color: #1a1f4b;
+        font-size: 1rem;
+        border-bottom: 2px solid #bfa980;
     }
     .card-content {
         padding: 1rem;
     }
-    .card-content h3 {
-        font-size: 1.1rem;
-        margin-bottom: 0.5rem;
-        color: #2b2b2b;
-    }
-    .card-content p {
-        font-size: 0.95rem;
-        color: #4a4a4a;
-    }
+    .card-content h3 { font-size: 1.1rem; color: #1a1f4b; margin-bottom:0.5rem; }
+    .card-content p { font-size: 0.95rem; color: #4a4a4a; }
 
     /* ===== Ad Banner ===== */
     .ad-banner {
-        background-color: #ddd6ce;
-        text-align: center;
+        max-width: 1000px;
+        margin: 2rem auto;
         padding: 1.5rem;
-        margin: 2rem 1rem;
-        border: 2px dashed #b3a89e;
+        text-align: center;
+        background-color: #e6d6b8;
+        border: 2px dashed #bfa980;
         font-style: italic;
-        color: #555;
+        color: #333;
     }
 
     /* ===== Footer ===== */
     footer {
-        background-color: #e4ded7;
+        background-color: #e3d9c5;
         padding: 1.5rem;
         text-align: center;
         font-size: 0.9rem;
-        color: #333;
-        border-top: 4px solid #b3a89e;
+        color: #1a1f4b;
+        border-top: 3px solid #bfa980;
     }
 </style>
 </head>
@@ -131,74 +139,11 @@
 
 <section class="hero">
     <h2>Exploring the Economics of Settlement</h2>
-    <p>Welcome to <strong>The Settlonomics Review</strong>, an academic-style journal dedicated to the study of migration, urban development, cultural economics, and the evolving dynamics of global relocation.</p>
+    <p>Settlonomics is an academic-style journal analyzing migration, urban planning, and socio-economic systems. Our goal is to deliver rigorous research with clarity and style.</p>
 </section>
 
-<section class="articles">
+<section class="articles" id="articles">
     <!-- 9 Articles -->
-    <div class="card">
-        <div class="card-img"></div>
-        <div class="card-content">
-            <h3>Urban Growth Trends</h3>
-            <p>Examining the rapid expansion of metropolitan areas in the 21st century.</p>
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-img"></div>
-        <div class="card-content">
-            <h3>Migration Patterns</h3>
-            <p>How cross-border movements shape economies and communities.</p>
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-img"></div>
-        <div class="card-content">
-            <h3>Housing Market Shifts</h3>
-            <p>The rise of remote work and its influence on housing demand.</p>
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-img"></div>
-        <div class="card-content">
-            <h3>Tax Policy Impacts</h3>
-            <p>Comparing fiscal incentives for attracting new residents.</p>
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-img"></div>
-        <div class="card-content">
-            <h3>Cultural Integration</h3>
-            <p>The role of language and tradition in urban assimilation.</p>
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-img"></div>
-        <div class="card-content">
-            <h3>Infrastructure Investments</h3>
-            <p>Public transport and smart city technologies reshaping living spaces.</p>
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-img"></div>
-        <div class="card-content">
-            <h3>Climate Relocation</h3>
-            <p>Predicting settlement shifts due to climate change pressures.</p>
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-img"></div>
-        <div class="card-content">
-            <h3>Business Ecosystems</h3>
-            <p>How entrepreneurship hubs emerge in post-industrial cities.</p>
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-img"></div>
-        <div class="card-content">
-            <h3>Global Mobility Future</h3>
-            <p>Visions for a borderless workforce and distributed living.</p>
-        </div>
-    </div>
 </section>
 
 <div class="ad-banner">
@@ -206,11 +151,40 @@
 </div>
 
 <footer>
-    &copy; 2025 The Settlonomics Review. All rights reserved.
+    &copy; 2025 The Settlonomics Review — All Rights Reserved
 </footer>
+
+<script>
+    const container = document.getElementById('articles');
+    const articles = [
+        {title:"Urban Growth Trends", text:"Examining rapid expansion of metropolitan areas."},
+        {title:"Migration Patterns", text:"How cross-border movements shape economies."},
+        {title:"Housing Market Shifts", text:"Impact of remote work on housing demand."},
+        {title:"Tax Policy Impacts", text:"Fiscal incentives for attracting residents."},
+        {title:"Cultural Integration", text:"Role of language and tradition in cities."},
+        {title:"Infrastructure Investments", text:"Smart city technologies reshaping living spaces."},
+        {title:"Climate Relocation", text:"Predicting settlement shifts due to climate."},
+        {title:"Business Ecosystems", text:"Entrepreneurship hubs in post-industrial cities."},
+        {title:"Global Mobility Future", text:"Visions for a borderless workforce."}
+    ];
+
+    articles.forEach(a=>{
+        const card = document.createElement('div');
+        card.className='card';
+        card.innerHTML=`
+            <div class="card-img">Image</div>
+            <div class="card-content">
+                <h3>${a.title}</h3>
+                <p>${a.text}</p>
+            </div>
+        `;
+        container.appendChild(card);
+    });
+</script>
 
 </body>
 </html>
+
 
 
 
