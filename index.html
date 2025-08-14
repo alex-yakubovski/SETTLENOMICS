@@ -6,93 +6,128 @@
 <title>The Settlonomics Review</title>
 <style>
     body {
-        font-family: 'Georgia', serif;
-        background-color: #f9f8f6;
-        color: #222;
         margin: 0;
-        padding: 0;
+        font-family: "Georgia", serif;
+        background-color: #f4f1ec;
+        color: #2c2c2c;
+        line-height: 1.6;
     }
     header {
-        background: #e3ded7;
-        padding: 20px;
+        background-color: #e6ded0;
         text-align: center;
-        border-bottom: 3px solid #b1aaa0;
+        padding: 2rem 1rem;
+        border-bottom: 3px solid #c5b9a3;
     }
     header h1 {
         margin: 0;
         font-size: 2.5rem;
+        text-transform: uppercase;
         letter-spacing: 2px;
     }
-    .intro {
-        max-width: 900px;
-        margin: 40px auto;
-        text-align: center;
-        padding: 20px;
-        line-height: 1.6;
-        border: 2px solid #b1aaa0;
-        background-color: #f4f1ed;
-    }
-    .grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 20px;
-        max-width: 1200px;
-        margin: 40px auto;
-        padding: 0 20px;
-    }
-    .card {
-        border: 2px solid #b1aaa0;
-        background: #fff;
+    nav {
+        background-color: #d9d1c3;
         display: flex;
-        flex-direction: column;
+        justify-content: center;
+        gap: 2rem;
+        padding: 0.75rem;
+        border-bottom: 2px solid #b7ac98;
+    }
+    nav a {
+        text-decoration: none;
+        font-weight: bold;
+        color: #2c2c2c;
+        position: relative;
+    }
+    nav a::after {
+        content: "";
+        display: block;
+        width: 0%;
+        height: 2px;
+        background: #2c2c2c;
+        transition: 0.3s;
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+    }
+    nav a:hover::after {
+        width: 100%;
+    }
+    .intro {
+        max-width: 1000px;
+        margin: auto;
+        padding: 3rem 1rem;
+        text-align: center;
+        border-bottom: 3px solid #c5b9a3;
+    }
+    .intro h2 {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+    }
+    .intro p {
+        font-size: 1.2rem;
+        color: #3a3a3a;
+    }
+    .articles {
+        max-width: 1200px;
+        margin: auto;
+        padding: 3rem 1rem;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+    }
+    .article {
+        background-color: #ece6da;
+        border: 2px solid #b7ac98;
+        padding: 1rem;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.08);
         transition: transform 0.25s ease, box-shadow 0.25s ease;
     }
-    .card:hover {
+    .article:hover {
         transform: translateY(-5px);
-        box-shadow: 0px 6px 18px rgba(0,0,0,0.15);
+        box-shadow: 0 8px 18px rgba(0,0,0,0.15);
     }
-    .image-placeholder {
-        background: linear-gradient(135deg, #dcd3c3, #c5bcae);
+    .article-img {
+        background: linear-gradient(135deg, #d7cab8, #e6ded0);
         height: 180px;
+        border-bottom: 2px solid #b7ac98;
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 1.2rem;
-        color: #4a443d;
+        font-size: 1rem;
         font-weight: bold;
-        border-bottom: 2px solid #b1aaa0;
+        color: #5a5344;
     }
-    .card-content {
-        padding: 15px;
-        flex: 1;
-    }
-    .card-content h3 {
-        margin-top: 0;
-        font-size: 1.1rem;
-    }
-    .card-content p {
-        font-size: 0.9rem;
-        line-height: 1.4;
-        color: #444;
+    .article h3 {
+        margin-top: 1rem;
+        font-size: 1.2rem;
     }
     .ad-banner {
-        background: #dcd3c3;
-        padding: 40px;
+        max-width: 1000px;
+        margin: auto;
+        padding: 2rem 1rem;
         text-align: center;
-        margin: 40px auto;
-        max-width: 900px;
-        border: 2px solid #b1aaa0;
-        font-size: 1.2rem;
-        font-weight: bold;
-        letter-spacing: 1px;
-        color: #4a443d;
+        background-color: #e6ded0;
+        border: 2px dashed #b7ac98;
+        font-size: 1.1rem;
+        margin-top: 3rem;
     }
     footer {
-        background: #e3ded7;
+        background-color: #d9d1c3;
         text-align: center;
-        padding: 20px;
+        padding: 2rem 1rem;
+        margin-top: 3rem;
+        border-top: 3px solid #b7ac98;
         font-size: 0.9rem;
-        border-top: 3px solid #b1aaa0;
+    }
+    @media (max-width: 900px) {
+        .articles {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+    @media (max-width: 600px) {
+        .articles {
+            grid-template-columns: 1fr;
+        }
     }
 </style>
 </head>
@@ -102,87 +137,58 @@
     <h1>The Settlonomics Review</h1>
 </header>
 
+<nav>
+    <a href="#">Home</a>
+    <a href="#">Articles</a>
+    <a href="#">About</a>
+    <a href="#">Contact</a>
+</nav>
+
 <section class="intro">
     <h2>Exploring the Economics of Settlement</h2>
-    <p>The Settlonomics Review is a scholarly publication dedicated to exploring the intersection of migration, urban development, and economic dynamics. We analyze trends, share insights, and promote informed discourse for policymakers, researchers, and global citizens alike.</p>
+    <p>Settlonomics is dedicated to the academic exploration of migration, infrastructure, and the socio-economic systems that shape our world. Our goal is to bring clarity through in-depth research and analysis.</p>
 </section>
 
-<section class="grid">
-    <div class="card">
-        <div class="image-placeholder">Image 1</div>
-        <div class="card-content">
-            <h3>Article Title One</h3>
-            <p>Brief description of the article that engages the reader while remaining concise and informative.</p>
-        </div>
-    </div>
-    <div class="card">
-        <div class="image-placeholder">Image 2</div>
-        <div class="card-content">
-            <h3>Article Title Two</h3>
-            <p>Short teaser for the second featured article, touching on its main subject and perspective.</p>
-        </div>
-    </div>
-    <div class="card">
-        <div class="image-placeholder">Image 3</div>
-        <div class="card-content">
-            <h3>Article Title Three</h3>
-            <p>Introduction to the content, giving just enough detail to intrigue without revealing too much.</p>
-        </div>
-    </div>
-    <div class="card">
-        <div class="image-placeholder">Image 4</div>
-        <div class="card-content">
-            <h3>Article Title Four</h3>
-            <p>Analytical insights into pressing settlement issues with a focus on socio-economic factors.</p>
-        </div>
-    </div>
-    <div class="card">
-        <div class="image-placeholder">Image 5</div>
-        <div class="card-content">
-            <h3>Article Title Five</h3>
-            <p>Coverage of recent developments in urban planning and their broader economic implications.</p>
-        </div>
-    </div>
-    <div class="card">
-        <div class="image-placeholder">Image 6</div>
-        <div class="card-content">
-            <h3>Article Title Six</h3>
-            <p>A concise preview of an in-depth report on migration trends and related policy debates.</p>
-        </div>
-    </div>
-    <div class="card">
-        <div class="image-placeholder">Image 7</div>
-        <div class="card-content">
-            <h3>Article Title Seven</h3>
-            <p>Exploring the role of culture and heritage in shaping urban settlement landscapes.</p>
-        </div>
-    </div>
-    <div class="card">
-        <div class="image-placeholder">Image 8</div>
-        <div class="card-content">
-            <h3>Article Title Eight</h3>
-            <p>Insights from experts on sustainable housing solutions for rapidly growing cities.</p>
-        </div>
-    </div>
-    <div class="card">
-        <div class="image-placeholder">Image 9</div>
-        <div class="card-content">
-            <h3>Article Title Nine</h3>
-            <p>An engaging look at demographic shifts and their impact on local economies.</p>
-        </div>
-    </div>
+<section class="articles" id="articles">
+    <!-- Articles will be generated here -->
 </section>
 
 <div class="ad-banner">
-    [Advertisement Banner Space]
+    Banner Ad Space — Promote with us
 </div>
 
 <footer>
-    © 2025 The Settlonomics Review. All rights reserved.
+    &copy; 2025 The Settlonomics Review — All Rights Reserved
 </footer>
+
+<script>
+    const articlesContainer = document.getElementById("articles");
+
+    for (let i = 1; i <= 9; i++) {
+        const article = document.createElement("div");
+        article.classList.add("article");
+
+        const img = document.createElement("div");
+        img.classList.add("article-img");
+        img.textContent = "Image " + i;
+
+        const title = document.createElement("h3");
+        title.textContent = "Article Title " + i;
+
+        const excerpt = document.createElement("p");
+        excerpt.textContent = "This is a brief excerpt of article " + i + ", offering a glimpse into the topic discussed.";
+
+        article.appendChild(img);
+        article.appendChild(title);
+        article.appendChild(excerpt);
+
+        articlesContainer.appendChild(article);
+    }
+</script>
 
 </body>
 </html>
+
 
 
 
