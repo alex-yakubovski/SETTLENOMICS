@@ -3,150 +3,172 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Settlonomics</title>
+<title>The Settlonomics Review</title>
 <style>
-  * {margin:0; padding:0; box-sizing:border-box;}
-  body {font-family: 'Arial', sans-serif; line-height:1.6; color:#333; background:#fdfdfd; scroll-behavior: smooth;}
-  a {text-decoration:none; color:#2980b9;}
-  img {max-width:100%; height:auto; display:block;}
-  .container {width:90%; max-width:1200px; margin:0 auto;}
-
-  /* Header / nav */
-  header {background:#2c3e50; color:#fff; padding:15px 0; position:sticky; top:0; z-index:100;}
-  header nav ul {display:flex; justify-content:center; list-style:none; flex-wrap:wrap;}
-  header nav ul li {margin:0 15px;}
-  header nav ul li a {color:#fff; font-weight:bold; padding:5px 10px; transition:0.3s;}
-  header nav ul li a:hover {background:#34495e; border-radius:4px;}
-
-  /* Project title */
-  .project-title {text-align:center; padding:40px 20px; background:#ecf0f1; opacity:0; transform:translateY(30px); transition:1s ease;}
-  .project-title h1 {font-size:2.5rem; margin-bottom:15px;}
-  .project-title p {font-size:1.2rem; max-width:700px; margin:0 auto;}
-
-  /* Main block */
-  .main-block {background:#3498db; color:#fff; text-align:center; padding:60px 20px; opacity:0; transform:translateY(30px); transition:1s ease;}
-  .main-block h2 {font-size:2rem; margin-bottom:20px;}
-  .main-block p {font-size:1.1rem; max-width:800px; margin:0 auto;}
-
-  /* Latest Articles */
-  .articles-section {padding:60px 0; background:#f5f5f5;}
-  .articles-section h2 {text-align:center; font-size:2rem; margin-bottom:40px; opacity:0; transform:translateY(30px); transition:1s ease;}
-  .articles-grid {display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:20px;}
-  .article-card {background:#fff; border:1px solid #ddd; padding:20px; transition:0.5s; opacity:0; transform:translateY(30px);}
-  .article-card:hover {transform:translateY(-10px) scale(1.03); box-shadow:0 10px 20px rgba(0,0,0,0.15);}
-  .article-card h3 {font-size:1.2rem; margin-bottom:10px;}
-  .article-card p {font-size:0.95rem; margin-bottom:10px;}
-
-  /* Banner */
-  .banner {background:#e74c3c; color:#fff; text-align:center; padding:40px 20px; margin:60px 0; opacity:0; transform:translateY(30px); transition:1s ease; animation:pulse 3s infinite alternate;}
-  .banner h3 {font-size:1.5rem;}
-  .banner p {font-size:1rem;}
-
-  /* Footer */
-  footer {background:#2c3e50; color:#fff; text-align:center; padding:30px 20px; opacity:0; transform:translateY(30px); transition:1s ease;}
-  footer p {font-size:0.9rem;}
-
-  /* Fade-in animation */
-  .fade-in {opacity:1 !important; transform:translateY(0) !important;}
-
-  /* Pulse animation for banner */
-  @keyframes pulse {
-    0% {background-color:#e74c3c;}
-    50% {background-color:#c0392b;}
-    100% {background-color:#e74c3c;}
-  }
-
-  /* Adaptive */
-  @media(max-width:768px){
-    .project-title h1 {font-size:2rem;}
-    .main-block h2 {font-size:1.5rem;}
-    .articles-section h2 {font-size:1.5rem;}
-  }
+    body {
+        margin: 0;
+        font-family: "Georgia", serif;
+        background: #f8f8f8;
+        color: #333;
+    }
+    header {
+        background: #0c2340;
+        color: white;
+        padding: 1.5rem;
+        text-align: center;
+    }
+    header h1 {
+        margin: 0;
+        font-size: 2rem;
+    }
+    nav {
+        background: #e5e5e5;
+        padding: 0.5rem;
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+    nav a {
+        color: #0c2340;
+        text-decoration: none;
+        font-weight: bold;
+    }
+    .intro {
+        max-width: 900px;
+        margin: auto;
+        padding: 2rem 1rem;
+        text-align: center;
+    }
+    .intro h2 {
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+    }
+    .articles {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1.5rem;
+        max-width: 1200px;
+        margin: auto;
+        padding: 1rem;
+    }
+    .card {
+        background: white;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        display: flex;
+        flex-direction: column;
+    }
+    .thumb {
+        background: linear-gradient(135deg, #004080, #0099cc);
+        height: 180px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 1.2rem;
+        font-weight: bold;
+    }
+    .card-content {
+        padding: 1rem;
+        flex-grow: 1;
+    }
+    .card-content h3 {
+        margin-top: 0;
+        font-size: 1.1rem;
+        color: #0c2340;
+    }
+    .ad-banner {
+        max-width: 1200px;
+        margin: 2rem auto;
+        padding: 1rem;
+        background: #ddd;
+        text-align: center;
+        font-weight: bold;
+        color: #555;
+        border-radius: 6px;
+    }
+    footer {
+        background: #0c2340;
+        color: white;
+        padding: 1rem;
+        text-align: center;
+        font-size: 0.9rem;
+    }
 </style>
 </head>
 <body>
 
-<!-- Header -->
 <header>
-  <nav>
-    <ul>
-      <li><a href="#home">Home</a></li>
-      <li><a href="#articles">Articles</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
+    <h1>The Settlonomics Review</h1>
 </header>
 
-<!-- Project Title -->
-<section class="project-title" id="home">
-  <h1>Settlonomics</h1>
-  <p>Exploring global settlement, migration, and socio-economic strategies for modern living.</p>
+<nav>
+    <a href="#">Home</a>
+    <a href="#">Economy</a>
+    <a href="#">Relocation</a>
+    <a href="#">Cities</a>
+    <a href="#">Contact</a>
+</nav>
+
+<section class="intro">
+    <h2>Understanding Global Mobility & Economics</h2>
+    <p>Settlonomics explores the intersection of settlement trends, economic dynamics, and cultural adaptation. Our mission is to provide academically grounded insights for global citizens, investors, and policymakers.</p>
 </section>
 
-<!-- Main Block / Devise -->
-<section class="main-block">
-  <h2>Our Mission</h2>
-  <p>Settlonomics provides deep insights into urban development, migration patterns, and the economics behind settlement choices.</p>
+<section class="articles" id="articles-grid">
+    <!-- JS will generate cards -->
 </section>
 
-<!-- Latest Articles -->
-<section class="articles-section" id="articles">
-  <div class="container">
-    <h2>Latest Articles</h2>
-    <div class="articles-grid" id="articles-grid">
-      <!-- JS will insert article cards here -->
-    </div>
-  </div>
-</section>
+<div class="ad-banner">
+    Advertisement Space – Your Banner Here
+</div>
 
-<!-- Banner -->
-<section class="banner">
-  <h3>Special Announcement</h3>
-  <p>Join our newsletter to stay updated with the latest settlement research!</p>
-</section>
-
-<!-- Footer -->
-<footer id="contact">
-  <p>&copy; 2025 Settlonomics. All rights reserved.</p>
+<footer>
+    &copy; 2025 The Settlonomics Review – All Rights Reserved
 </footer>
 
 <script>
-  // Данные статей
-  const articles = [
-    {title:"Urbanization Trends in 2025", excerpt:"A concise review of migration flows and economic impacts.", url:"#"},
-    {title:"Tax Policies and Settlement Choices", excerpt:"How taxation affects relocation decisions.", url:"#"},
-    {title:"Cultural Factors in Migration", excerpt:"Culture and lifestyle in settlement decisions.", url:"#"},
-    {title:"Tech Hubs and Cities", excerpt:"Why technology attracts new settlers.", url:"#"},
-    {title:"Remote Work Impact", excerpt:"Remote work shaping global settlement patterns.", url:"#"},
-    {title:"Housing Market Analysis", excerpt:"Trends in affordable housing.", url:"#"},
-    {title:"Economic Incentives for Migration", excerpt:"Government policies that drive settlement.", url:"#"},
-    {title:"Environmental Factors", excerpt:"Climate change and settlement choices.", url:"#"},
-    {title:"Future of Urban Planning", excerpt:"Designing cities for sustainable living.", url:"#"}
-  ];
+    const articlesContainer = document.getElementById("articles-grid");
 
-  const grid = document.getElementById('articles-grid');
-  articles.forEach(article => {
-    const card = document.createElement('div');
-    card.className = 'article-card';
-    card.innerHTML = `<h3>${article.title}</h3><p>${article.excerpt}</p><a href="${article.url}">Read More</a>`;
-    grid.appendChild(card);
-  });
+    const articles = [
+        "Economic Trends in Dubai",
+        "Lisbon Housing Market Analysis",
+        "Tbilisi: Emerging Investment Hub",
+        "The Future of Remote Work",
+        "Global Tax Optimization",
+        "Cultural Adaptation in Relocation",
+        "Sustainable Urban Development",
+        "Digital Nomad Visa Policies",
+        "Risk Management for Expats"
+    ];
 
-  // Fade-in при скролле
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if(entry.isIntersecting){
-        entry.target.classList.add('fade-in');
-      }
+    articles.forEach((title, index) => {
+        const card = document.createElement("div");
+        card.className = "card";
+        
+        const thumb = document.createElement("div");
+        thumb.className = "thumb";
+        thumb.textContent = `Image ${index + 1}`;
+        
+        const content = document.createElement("div");
+        content.className = "card-content";
+        
+        const h3 = document.createElement("h3");
+        h3.textContent = title;
+        
+        const p = document.createElement("p");
+        p.textContent = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vel magna at dui tempor.";
+        
+        content.appendChild(h3);
+        content.appendChild(p);
+        
+        card.appendChild(thumb);
+        card.appendChild(content);
+        articlesContainer.appendChild(card);
     });
-  }, {threshold:0.2});
-
-  document.querySelectorAll('.project-title, .main-block, .articles-section h2, .article-card, .banner, footer').forEach(el => {
-    observer.observe(el);
-  });
 </script>
 
 </body>
 </html>
-
