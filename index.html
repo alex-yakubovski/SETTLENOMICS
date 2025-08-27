@@ -6,42 +6,38 @@
 <title>The Settlenomics Review</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Merriweather:wght@700&display=swap" rel="stylesheet">
 <style>
-body {
-    margin:0; font-family:"Inter", sans-serif; background:#f5f5f5; color:#1a2a6c; line-height:1.6;
-}
-h1,h2,h3 { margin:0; }
-h1 { font-family:'Merriweather', serif; font-weight:700; }
-a { text-decoration:none; color: inherit; cursor:pointer; }
-
+body {margin:0;font-family:"Inter",sans-serif;background:#f5f5f5;color:#1a2a6c;line-height:1.6;}
+h1,h2,h3{margin:0;}
+h1{font-family:'Merriweather',serif;font-weight:700;}
+a{text-decoration:none;color: inherit;cursor:pointer;}
 /* Header */
-header { background:#fff; padding:1.5rem 1rem; text-align:center; }
-nav { margin-top:0.5rem; }
-nav a { margin:0 1rem; font-weight:600; cursor:pointer; }
-
+header{background:#fff;padding:1.5rem 1rem;text-align:center;}
+nav{margin-top:0.5rem;}
+nav a{position: relative; display:inline-block;margin:0 1rem;font-size:0.95rem;font-weight:600;color:#1a2a6c;padding-bottom:2px;overflow:hidden;}
+nav a::after{content:"";position:absolute;left:0;bottom:0;width:0;height:40%;background-color: rgba(168, 213, 162,0.5);transition:width 0.3s ease;}
+nav a:hover::after{width:100%;}
 /* Hero */
-.hero { padding:2rem 1rem; text-align:center; background-color: #1a2a6c; }
-.hero h2 { font-size:1.8rem; color:#f9f9f9; margin-bottom:1rem; font-family:'Merriweather', serif; }
-.hero p { max-width:700px; margin:0 auto; font-size:1.05rem; color:#dce0f0; }
-.view-all-btn { margin-top:1.5rem; display:inline-block; padding:0.7rem 1.5rem; background:#f9f9f9; color:#1a2a6c; font-weight:600; border-radius:5px; cursor:pointer; transition:0.3s;}
-.view-all-btn:hover { background:#1a2a6c; color:#f9f9f9; }
-
-/* Articles grid */
-.articles { display:grid; grid-template-columns:repeat(auto-fill,minmax(250px,1fr)); gap:1rem; max-width:1200px; margin:2rem auto; padding:0 1rem; }
-.card {
-    background:#fff; display:flex; flex-direction:column; border-radius:0; height:250px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.card:hover { transform: translateY(-4px); box-shadow:0 10px 20px rgba(0,0,0,0.15); }
-.card-img { flex:1; display:flex; align-items:center; justify-content:center; font-size:3rem; border-bottom:1px solid #d0d4e0; }
-.card-content { padding:0.8rem; }
-.card-content h3 { font-size:1.1rem; font-family:'Merriweather', serif; margin-bottom:0.3rem; }
-.card-content p { font-size:0.9rem; }
-
+.hero{padding:2rem 1rem;text-align:center;background-color:#1a2a6c;}
+.hero h2{font-size:1.8rem;color:#f9f9f9;margin-bottom:1rem;font-family:'Merriweather',serif;}
+.hero p{max-width:700px;margin:0 auto;font-size:1.05rem;color:#dce0f0;}
+.view-all-btn{margin-top:1.5rem;display:inline-block;padding:0.7rem 1.5rem;background:#f9f9f9;color:#1a2a6c;font-weight:600;border-radius:5px;cursor:pointer;transition:0.3s;}
+.view-all-btn:hover{background:#1a2a6c;color:#f9f9f9;}
+/* Large Articles */
+.articles{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:1rem;max-width:1200px;margin:2rem auto;padding:0 1rem;}
+.card{background:#fff;display:flex;flex-direction:column;border-radius:0;height:250px;transition:transform 0.3s ease,box-shadow 0.3s ease;}
+.card:hover{transform: translateY(-4px);box-shadow:0 10px 20px rgba(0,0,0,0.15);}
+.card-img{flex:1;display:flex;align-items:center;justify-content:center;font-size:3rem;border-bottom:1px solid #d0d4e0;background-size:cover;background-position:center;}
+.card-content{padding:0.8rem;}
+.card-content h3{font-size:1.1rem;font-family:'Merriweather',serif;margin-bottom:0.3rem;}
+.card-content p{font-size:0.9rem;}
+/* Mini Articles */
+.other-articles{display:flex;flex-wrap:wrap;gap:0.5rem;max-width:1200px;margin:1rem auto;padding:0 1rem;}
+.mini-card{display:flex;align-items:center;gap:0.5rem;padding:0.5rem 0.8rem;background:#fff;border-radius:4px;font-size:0.9rem;cursor:default;}
+.mini-icon{width:24px;height:24px;display:flex;align-items:center;justify-content:center;border-radius:4px;font-size:1rem;color:#fff;}
 /* Ad Banner */
-.ad-banner { max-width:1200px; margin:2rem auto; padding:1.5rem; text-align:center; background:#fff; border:1px dashed #ccc; font-style:italic; color:#1a2a6c; }
-
+.ad-banner{max-width:1200px;margin:2rem auto;padding:1.5rem;text-align:center;background:#fff;border:1px dashed #ccc;font-style:italic;color:#1a2a6c;}
 /* Footer */
-footer { background:#fff; padding:1.5rem; text-align:center; border-top:1px solid #ccc; font-size:0.9rem; }
+footer{background:#fff;padding:1.5rem;text-align:center;border-top:1px solid #ccc;font-size:0.9rem;}
 </style>
 </head>
 <body>
@@ -63,16 +59,13 @@ footer { background:#fff; padding:1.5rem; text-align:center; border-top:1px soli
 </section>
 
 <section class="articles" id="articles"></section>
-
+<div class="other-articles" id="otherArticles"></div>
 <div class="ad-banner">[ Advertisement Space ]</div>
-
-<footer>
-&copy; 2025 The Settlenomics Review — All Rights Reserved
-</footer>
+<footer>&copy; 2025 The Settlenomics Review — All Rights Reserved</footer>
 
 <script type="application/json" id="articles-data">
 [
-    {"title":"Urban Growth Trends - August 2025","text":"Examining rapid expansion of metropolitan areas."},
+    {"title":"Urban Growth Trends","text":"Examining rapid expansion of metropolitan areas."},
     {"title":"Migration Patterns","text":"How cross-border movements shape economies."},
     {"title":"Housing Market Shifts","text":"Impact of remote work on housing demand."},
     {"title":"Tax Policy Impacts","text":"Fiscal incentives for attracting residents."},
@@ -88,26 +81,27 @@ footer { background:#fff; padding:1.5rem; text-align:center; border-top:1px soli
 </script>
 
 <script>
-// Генерация цвета и иконки
-function getRandomColor() {
-    const colors = ['#FFD700','#87CEEB','#FFA07A','#90EE90','#FFB6C1','#8A2BE2','#00CED1','#FF8C00','#20B2AA'];
-    return colors[Math.floor(Math.random() * colors.length)];
-}
-function getRandomIcon() {
-    const icons = ['🏙️','🌍','🏠','🏢','🛣️','🧭','📈','📊','💼'];
-    return icons[Math.floor(Math.random() * icons.length)];
-}
+// Рандомный цвет и иконка
+function getRandomColor() {const colors=['#FFD700','#87CEEB','#FFA07A','#90EE90','#FFB6C1','#8A2BE2','#00CED1','#FF8C00','#20B2AA'];return colors[Math.floor(Math.random()*colors.length)];}
+function getRandomIcon() {const icons=['🏙️','🌍','🏠','🏢','🛣️','🧭','📈','📊','💼'];return icons[Math.floor(Math.random()*icons.length)];}
 
-const container = document.getElementById('articles');
 const data = JSON.parse(document.getElementById('articles-data').textContent);
+const container = document.getElementById('articles');
+const otherContainer = document.getElementById('otherArticles');
 
-// последние 9 статей: заглушки + картинка по title.html
+// последние 9
 const latest = data.slice(0,9);
 latest.forEach(a=>{
     const card = document.createElement('div');
     card.className='card';
+    const titleSlug = a.title.replace(/\s+/g,'_');
+    const imgUrl = `images/${titleSlug}.jpg`; // путь к реальной картинке
+    const img = new Image();
+    img.src = imgUrl;
+    img.onload = ()=> {card.querySelector('.card-img').style.backgroundImage=`url('${imgUrl}')`; card.querySelector('.card-img').textContent='';}
+    img.onerror = ()=>{}; // если нет картинки, оставить заглушку
     card.innerHTML=`
-        <a href="${a.title.replace(/\s+/g,'_')}.html" style="color:inherit; text-decoration:none;">
+        <a href="${titleSlug}.html" style="color:inherit;text-decoration:none;">
         <div class="card-img" style="background-color:${getRandomColor()};">${getRandomIcon()}</div>
         <div class="card-content">
             <h3>${a.title}</h3>
@@ -116,38 +110,18 @@ latest.forEach(a=>{
     container.appendChild(card);
 });
 
-// остальные статьи: также цветные блоки, но без ссылки на картинку
+// остальные статьи (мини)
 const others = data.slice(9);
 others.forEach(a=>{
-    const card = document.createElement('div');
-    card.className='card';
-    card.innerHTML=`
-        <div class="card-img" style="background-color:${getRandomColor()};">${getRandomIcon()}</div>
-        <div class="card-content">
-            <h3>${a.title}</h3>
-            <p>${a.text}</p>
-        </div>`;
-    container.appendChild(card);
+    const mini = document.createElement('div');
+    mini.className='mini-card';
+    mini.innerHTML=`<div class="mini-icon" style="background:${getRandomColor()};">${getRandomIcon()}</div>${a.title}`;
+    otherContainer.appendChild(mini);
 });
 
-// Эффект появления последних 9 карточек
-const observer = new IntersectionObserver((entries)=>{
-    entries.forEach(entry=>{
-        if(entry.isIntersecting){
-            entry.target.classList.add('visible');
-            observer.unobserve(entry.target);
-        }
-    });
-},{threshold:0.1});
-document.querySelectorAll('.card').forEach(card=>observer.observe(card));
-
-// Плавная прокрутка
-document.getElementById('viewAllBtn').addEventListener('click', ()=>{
-    container.scrollIntoView({behavior:'smooth'});
-});
-document.getElementById('menuArticles').addEventListener('click', ()=>{
-    container.scrollIntoView({behavior:'smooth'});
-});
+// плавная прокрутка
+document.getElementById('viewAllBtn').addEventListener('click',()=>{otherContainer.scrollIntoView({behavior:'smooth'});});
+document.getElementById('menuArticles').addEventListener('click',()=>{otherContainer.scrollIntoView({behavior:'smooth'});});
 </script>
 
 </body>
