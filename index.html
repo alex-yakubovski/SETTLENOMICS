@@ -1,130 +1,133 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Settlenomics</title>
-  <style>
-    body { font-family: Arial, sans-serif; margin:0; padding:0; background:#f9f9f9; color:#333; }
-    header { background:#222; color:#fff; padding:1rem 2rem; display:flex; justify-content:space-between; align-items:center; }
-    nav a { color:#fff; margin:0 1rem; text-decoration:none; }
-    nav a:hover { text-decoration:underline; }
-
-    .articles { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; padding:2rem; }
-    .article-card { background:#fff; border-radius:8px; padding:1rem; box-shadow:0 2px 5px rgba(0,0,0,0.1); transition:transform .2s; text-align:center; }
-    .article-card:hover { transform:translateY(-5px); }
-    .article-card img { width:100%; height:150px; object-fit:cover; border-radius:6px; margin-bottom:0.5rem; }
-    .article-card h3 { margin:0.5rem 0; font-size:1.1rem; }
-    .article-card a { text-decoration:none; color:#222; }
-
-    .other-articles { padding:2rem; }
-    .other-list { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:15px; }
-    .mini-card { background:#fff; border-radius:6px; padding:1rem; display:flex; align-items:center; box-shadow:0 1px 3px rgba(0,0,0,0.1); }
-    .mini-icon { width:40px; height:40px; border-radius:6px; display:flex; align-items:center; justify-content:center; font-size:20px; color:#fff; margin-right:10px; flex-shrink:0; }
-    .mini-card a { text-decoration:none; color:#333; font-weight:bold; }
-
-    .view-all { display:block; margin:1rem auto; padding:0.6rem 1.2rem; background:#222; color:#fff; border:none; border-radius:6px; cursor:pointer; }
-    .view-all:hover { background:#444; }
-
-    @media(max-width:1024px){ .articles{grid-template-columns:repeat(2,1fr);} }
-    @media(max-width:600px){ .articles{grid-template-columns:1fr;} }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Settlenomics Review</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Merriweather:wght@700&display=swap" rel="stylesheet">
+<style>
+body {margin:0;font-family:"Inter",sans-serif;background:#f5f5f5;color:#1a2a6c;line-height:1.6;}
+h1,h2,h3{margin:0;}
+h1{font-family:'Merriweather',serif;font-weight:700;}
+a{text-decoration:none;color: inherit;cursor:pointer;}
+/* Header */
+header{background:#fff;padding:1.5rem 1rem;text-align:center;}
+nav{margin-top:0.5rem;}
+nav a{position: relative; display:inline-block;margin:0 1rem;font-size:0.95rem;font-weight:600;color:#1a2a6c;padding-bottom:2px;overflow:hidden;}
+nav a::after{content:"";position:absolute;left:0;bottom:0;width:0;height:40%;background-color: rgba(168, 213, 162,0.5);transition:width 0.3s ease;}
+nav a:hover::after{width:100%;}
+/* Hero */
+.hero{padding:2rem 1rem;text-align:center;background-color:#1a2a6c;}
+.hero h2{font-size:1.8rem;color:#f9f9f9;margin-bottom:1rem;font-family:'Merriweather',serif;}
+.hero p{max-width:700px;margin:0 auto;font-size:1.05rem;color:#dce0f0;}
+.view-all-btn{margin-top:1.5rem;display:inline-block;padding:0.7rem 1.5rem;background:#f9f9f9;color:#1a2a6c;font-weight:600;border-radius:5px;cursor:pointer;transition:0.3s;}
+.view-all-btn:hover{background:#1a2a6c;color:#f9f9f9;}
+/* Large Articles */
+.articles{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;max-width:1200px;margin:2rem auto;padding:0 1rem;}
+@media(max-width:768px){.articles{grid-template-columns:1fr;}}
+.card{background:#fff;display:flex;flex-direction:column;border-radius:0;height:250px;transition:transform 0.3s ease,box-shadow 0.3s ease;}
+.card:hover{transform: translateY(-4px);box-shadow:0 10px 20px rgba(0,0,0,0.15);}
+.card-img{flex:1;display:flex;align-items:center;justify-content:center;font-size:3rem;border-bottom:1px solid #d0d4e0;background-size:cover;background-position:center;}
+.card-content{padding:0.8rem;}
+.card-content h3{font-size:1.1rem;font-family:'Merriweather',serif;margin-bottom:0.3rem;}
+.card-content p{font-size:0.9rem;}
+/* Mini Articles */
+.other-articles{display:flex;flex-wrap:wrap;gap:0.5rem;max-width:1200px;margin:1rem auto;padding:0 1rem;}
+.mini-card{display:flex;align-items:center;gap:0.5rem;padding:0.5rem 0.8rem;background:#fff;border-radius:4px;font-size:0.9rem;}
+.mini-card a{text-decoration:none;color:inherit;display:flex;align-items:center;gap:0.5rem;width:100%;}
+.mini-icon{width:24px;height:24px;display:flex;align-items:center;justify-content:center;border-radius:4px;font-size:1rem;color:#fff;}
+/* Ad Banner */
+.ad-banner{max-width:1200px;margin:2rem auto;padding:1.5rem;text-align:center;background:#fff;border:1px dashed #ccc;font-style:italic;color:#1a2a6c;}
+/* Footer */
+footer{background:#fff;padding:1.5rem;text-align:center;border-top:1px solid #ccc;font-size:0.9rem;}
+</style>
 </head>
 <body>
+
 <header>
-  <h1>Settlenomics</h1>
-  <nav>
+<h1>The Settlenomics Review</h1>
+<nav>
     <a href="index.html">Home</a>
-    <a href="#articles">Articles</a>
+    <a id="menuArticles">Articles</a>
     <a href="about.html">About</a>
     <a href="contact.html">Contact</a>
-  </nav>
+</nav>
 </header>
 
-<main>
-  <section class="articles" id="latest"></section>
-  <button class="view-all" onclick="document.getElementById('articles').scrollIntoView({behavior:'smooth'})">View All Articles</button>
-  <section class="other-articles" id="articles">
-    <h2>Other Articles</h2>
-    <div class="other-list" id="other-list"></div>
-  </section>
-</main>
+<section class="hero">
+<h2>Exploring the Economics of Settlement</h2>
+<p>The Settlenomics Review delivers modern, insightful analysis of migration, urban planning, and socio-economic systems in a clear, elegant format.</p>
+<button class="view-all-btn" id="viewAllBtn">View All Articles</button>
+</section>
+
+<section class="articles" id="articles"></section>
+<div class="other-articles" id="otherArticles"></div>
+<div class="ad-banner">[ Advertisement Space ]</div>
+<footer>&copy; 2025 The Settlenomics Review — All Rights Reserved</footer>
+
+<script type="application/json" id="articles-data">
+[
+    {"title":"Urban Growth Trends","text":"Examining rapid expansion of metropolitan areas."},
+    {"title":"Migration Patterns","text":"How cross-border movements shape economies."},
+    {"title":"Housing Market Shifts","text":"Impact of remote work on housing demand."},
+    {"title":"Tax Policy Impacts","text":"Fiscal incentives for attracting residents."},
+    {"title":"Cultural Integration","text":"Role of language and tradition in cities."},
+    {"title":"Infrastructure Investments","text":"Smart city technologies reshaping living spaces."},
+    {"title":"Climate Relocation","text":"Predicting settlement shifts due to climate."},
+    {"title":"Business Ecosystems","text":"Entrepreneurship hubs in post-industrial cities."},
+    {"title":"Global Mobility Future","text":"Visions for a borderless workforce."},
+    {"title":"Urban Policy Case Studies","text":"Analyzing effective urban planning strategies."},
+    {"title":"Community Engagement Models","text":"How citizens shape settlements."},
+    {"title":"Public Transport Innovations","text":"New approaches to mobility in cities."}
+]
+</script>
 
 <script>
-  const articles = [
-    {"title":"Housing Market Shifts"},
-    {"title":"Urban Migration Trends"},
-    {"title":"Remote Work Dynamics"},
-    {"title":"Cultural Capital Index"},
-    {"title":"Green Energy Settlements"},
-    {"title":"Taxation Models"},
-    {"title":"Crime & Safety Patterns"},
-    {"title":"Education Mobility"},
-    {"title":"Healthcare Access"},
-    {"title":"Digital Nomad Visas"},
-    {"title":"Startup Ecosystems"},
-    {"title":"Transport Infrastructure"},
-    {"title":"Climate Adaptation"},
-    {"title":"Water Resources"},
-    {"title":"Tourism Impact"},
-    {"title":"Demographics"},
-    {"title":"Policy Framework"},
-    {"title":"Tech Hubs"},
-    {"title":"Food Security"},
-    {"title":"Urban Design"}
-  ];
+// Рандомный цвет и иконка
+function getRandomColor() {const colors=['#FFD700','#87CEEB','#FFA07A','#90EE90','#FFB6C1','#8A2BE2','#00CED1','#FF8C00','#20B2AA'];return colors[Math.floor(Math.random()*colors.length)];}
+function getRandomIcon() {const icons=['🏙️','🌍','🏠','🏢','🛣️','🧭','📈','📊','💼'];return icons[Math.floor(Math.random()*icons.length)];}
 
-  const icons = ["📘","📗","📙","📕","📊","📈","🏙️","🌍","🏡","💡","⚡","🏥","✈️","🎓","⚖️","🚉","🌱","📦","💻","📑"];
-  const colors = ["#007bff","#28a745","#ffc107","#dc3545","#6f42c1","#20c997","#fd7e14","#17a2b8"];
+const data = JSON.parse(document.getElementById('articles-data').textContent);
+const container = document.getElementById('articles');
+const otherContainer = document.getElementById('otherArticles');
 
-  function slugify(str){
-    return str.toLowerCase().replace(/\s+/g,'-');
-  }
+// последние 9 (большие карточки)
+const latest = data.slice(0,9);
+latest.forEach(a=>{
+    const card = document.createElement('div');
+    card.className='card';
+    const titleSlug = a.title.replace(/\s+/g,'_');
+    const imgUrl = `articles/images/${titleSlug}.jpg`;
+    const img = new Image();
+    img.src = imgUrl;
+    img.onload = ()=> {card.querySelector('.card-img').style.backgroundImage=`url('${imgUrl}')`; card.querySelector('.card-img').textContent='';}
+    img.onerror = ()=>{};
+    card.innerHTML=`
+        <a href="articles/${titleSlug}.html" style="color:inherit;text-decoration:none;">
+        <div class="card-img" style="background-color:${getRandomColor()};">${getRandomIcon()}</div>
+        <div class="card-content">
+            <h3>${a.title}</h3>
+            <p>${a.text}</p>
+        </div></a>`;
+    container.appendChild(card);
+});
 
-  const latestContainer = document.getElementById('latest');
-  const otherList = document.getElementById('other-list');
+// остальные статьи (мини, с ссылками)
+const others = data.slice(9);
+others.forEach(a=>{
+    const mini = document.createElement('div');
+    mini.className='mini-card';
+    const titleSlug = a.title.replace(/\s+/g,'_');
+    mini.innerHTML=`<a href="articles/${titleSlug}.html"><div class="mini-icon" style="background:${getRandomColor()};">${getRandomIcon()}</div>${a.title}</a>`;
+    otherContainer.appendChild(mini);
+});
 
-  articles.forEach((a,i)=>{
-    const slug = slugify(a.title);
-    if(i<9){
-      const card = document.createElement('div');
-      card.className="article-card";
-      const link = document.createElement('a');
-      link.href=`articles/${slug}.html`;
-
-      const img = document.createElement('img');
-      img.src=`articles/images/${slug}.jpg`;
-      img.alt=a.title;
-      img.onerror=()=>{ 
-        img.remove(); // убираем битое изображение
-        const fallback=document.createElement('div');
-        fallback.className='mini-icon';
-        fallback.style.background=colors[Math.floor(Math.random()*colors.length)];
-        fallback.textContent=icons[Math.floor(Math.random()*icons.length)];
-        card.insertBefore(fallback, card.firstChild);
-      };
-
-      const title=document.createElement('h3');
-      title.textContent=a.title;
-
-      link.appendChild(img);
-      link.appendChild(title);
-      card.appendChild(link);
-      latestContainer.appendChild(card);
-    } else {
-      const mini=document.createElement('div');
-      mini.className="mini-card";
-      const icon=document.createElement('div');
-      icon.className="mini-icon";
-      icon.style.background=colors[Math.floor(Math.random()*colors.length)];
-      icon.textContent=icons[Math.floor(Math.random()*icons.length)];
-      const link=document.createElement('a');
-      link.href=`articles/${slug}.html`;
-      link.textContent=a.title;
-      mini.appendChild(icon);
-      mini.appendChild(link);
-      otherList.appendChild(mini);
-    }
-  });
+// плавная прокрутка
+document.getElementById('viewAllBtn').addEventListener('click',()=>{otherContainer.scrollIntoView({behavior:'smooth'});});
+document.getElementById('menuArticles').addEventListener('click',()=>{otherContainer.scrollIntoView({behavior:'smooth'});});
 </script>
+
 </body>
 </html>
+
