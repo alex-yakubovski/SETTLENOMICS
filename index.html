@@ -124,19 +124,33 @@ nav a:hover::after {
 .card-content h3 { font-size:1.2rem; color:#1a2a6c; margin-bottom:0.5rem; font-family:'Merriweather', serif; }
 .card-content p { font-size:0.95rem; color:#1a2a6c; }
 
-/* Other articles */
+/* Other articles as tags */
 .all-articles {
     max-width:1200px;
     margin:2rem auto;
     padding:1rem;
     font-size:0.95rem;
 }
-.all-articles a {
-    margin-right: 15px;
-    color: #1a2a6c;
-    transition: color 0.2s;
+.other-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 0.5rem;
 }
-.all-articles a:hover { color:#0073e6; }
+.other-links a {
+    display: inline-block;
+    padding: 6px 12px;
+    background-color: #e6f0ff;
+    color: #1a2a6c;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    transition: background 0.3s, transform 0.3s;
+}
+.other-links a:hover {
+    background-color: #1a2a6c;
+    color: #f9f9f9;
+    transform: translateY(-2px);
+}
 
 /* Ad Banner */
 .ad-banner {
@@ -183,7 +197,7 @@ footer {
 
 <section class="all-articles" id="all-articles">
   <strong>Other Articles:</strong>
-  <div id="other-links" style="margin-top:0.5rem;"></div>
+  <div id="other-links" class="other-links"></div>
 </section>
 
 <div class="ad-banner">
@@ -230,7 +244,7 @@ latest.forEach(a=>{
     container.appendChild(card);
 });
 
-// остальные статьи в одну строку
+// остальные статьи как красивые теги
 const others = data.slice(9);
 others.forEach(a=>{
     const link = document.createElement('a');
