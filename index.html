@@ -15,7 +15,7 @@ body {
 }
 h1,h2,h3 { margin:0; }
 h1 { font-family: 'Merriweather', serif; font-weight:700; }
-a { text-decoration: none; color: inherit; }
+a { text-decoration: none; color: inherit; cursor:pointer; }
 
 /* Header */
 header {
@@ -39,8 +39,6 @@ nav a {
     font-weight: 600;
     color: #1a2a6c;
     padding-bottom: 2px;
-    overflow: hidden;
-    cursor: pointer;
 }
 nav a::after {
     content: "";
@@ -109,14 +107,13 @@ nav a:hover::after {
     transform: translateY(-6px);
 }
 .card-img {
-    background-color:#e6f0ff;
     height:160px;
     display:flex;
     align-items:center;
     justify-content:center;
     font-weight:bold;
     color:#1a2a6c;
-    font-size:1rem;
+    font-size:3rem;
     border-bottom:1px solid #d0d4e0;
 }
 .card-content {
@@ -125,7 +122,7 @@ nav a:hover::after {
 .card-content h3 { font-size:1.2rem; color:#1a2a6c; margin-bottom:0.5rem; font-family:'Merriweather', serif; }
 .card-content p { font-size:0.95rem; color:#1a2a6c; }
 
-/* Other articles as mini-cards with hover preview */
+/* Other articles as simple blocks */
 .all-articles {
     max-width:1200px;
     margin:2rem auto;
@@ -139,49 +136,24 @@ nav a:hover::after {
     margin-top: 0.5rem;
 }
 .other-card {
-    position: relative;
-    background-color: #ffffff;
     display: flex;
     align-items: center;
     padding: 8px 12px;
-    border-radius: 10px;
-    gap: 10px;
+    border-radius: 0;
     font-size: 0.9rem;
-    cursor: pointer;
-    transition: background 0.3s, transform 0.3s;
-}
-.other-card:hover {
-    background-color: #1a2a6c;
-    color: #f9f9f9;
-    transform: translateY(-2px);
+    background-color: #ffffff;
+    gap:10px;
 }
 .other-card .icon {
     width: 50px;
     height: 50px;
     background-color: #e6f0ff;
-    border-radius: 8px;
     display:flex;
     align-items:center;
     justify-content:center;
     font-weight:bold;
     color:#1a2a6c;
-}
-.other-card .preview {
-    display: none;
-    position: absolute;
-    left: 0;
-    top: 60px;
-    width: 100%;
-    background: #ffffff;
-    border: 1px solid #d0d4e0;
-    padding: 8px;
-    border-radius: 5px;
-    font-size: 0.85rem;
-    color:#1a2a6c;
-    z-index: 10;
-}
-.other-card:hover .preview {
-    display: block;
+    border-radius:0;
 }
 
 /* Ad Banner */
@@ -262,13 +234,23 @@ const container = document.getElementById('articles');
 const otherContainer = document.getElementById('other-links');
 const data = JSON.parse(document.getElementById('articles-data').textContent);
 
-// последние 9 статей
+// функции генерации цвета и иконки
+function getRandomColor() {
+    const colors = ['#FFD700','#87CEEB','#FFA07A','#90EE90','#FFB6C1','#8A2BE2','#00CED1','#FF8C00','#20B2AA'];
+    return colors[Math.floor(Math.random() * colors.length)];
+}
+function getRandomIcon() {
+    const icons = ['🏙️','🌍','🏠','🏢','🛣️','🧭','📈','📊','💼'];
+    return icons[Math.floor(Math.random() * icons.length)];
+}
+
+// последние 9 статей с цветными блоками и иконкой
 const latest = data.slice(0,9);
 latest.forEach(a=>{
     const card=document.createElement('div');
     card.className='card';
     card.innerHTML=`
-        <div class="card-img">Image</div>
+        <div class="card-img" style="background-color:${getRandomColor()};">${getRandomIcon()}</div>
         <div class="card-content">
             <h3>${a.title}</h3>
             <p>${a.text}</p>
@@ -276,17 +258,16 @@ latest.forEach(a=>{
     container.appendChild(card);
 });
 
-// остальные статьи как мини-карточки с hover preview
+// остальные статьи как простые блоки с иконкой
 const others = data.slice(9);
 others.forEach(a=>{
-    const card = document.createElement('a');
+    const card = document.createElement('div');
     card.className='other-card';
-    card.href="#"; 
-    card.innerHTML = `<div class="icon">📰</div><span>${a.title}</span><div class="preview">${a.text}</div>`;
+    card.innerHTML = `<div class="icon">📰</div><span>${a.title}</span>`;
     otherContainer.appendChild(card);
 });
 
-// эффект появления при скролле
+// эффект появления при скролле для последних 9
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if(entry.isIntersecting){
@@ -295,7 +276,6 @@ const observer = new IntersectionObserver((entries) => {
         }
     });
 }, { threshold: 0.1 });
-
 document.querySelectorAll('.card').forEach(card => observer.observe(card));
 
 // плавная прокрутка по кнопке View All Articles
