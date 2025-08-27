@@ -96,35 +96,29 @@ const latest = data.slice(0,9);
 latest.forEach(a=>{
     const card = document.createElement('div');
     card.className='card';
-    const titleSlug = a.title.replace(/\s+/g,'_');
-    const imgUrl = `articles/images/${titleSlug}.jpg`;
-
-    const link = document.createElement('a');
-    link.href = `articles/${titleSlug}.html`;
-    link.style.color = 'inherit';
-    link.style.textDecoration = 'none';
-
-    const cardImg = document.createElement('div');
-    cardImg.className='card-img';
-    cardImg.style.backgroundColor = getRandomColor();
-    cardImg.textContent = getRandomIcon();
-
-    const cardContent = document.createElement('div');
-    cardContent.className='card-content';
-    cardContent.innerHTML = `<h3>${a.title}</h3><p>${a.text}</p>`;
-
-    link.appendChild(cardImg);
-    link.appendChild(cardContent);
-    card.appendChild(link);
+    card.innerHTML=`
+        <a href="articles/${a.title.replace(/\s+/g,'_')}.html" style="color:inherit;text-decoration:none;">
+            <div class="card-img" style="background-color:${getRandomColor()};">${getRandomIcon()}</div>
+            <div class="card-content">
+                <h3>${a.title}</h3>
+                <p>${a.text}</p>
+            </div>
+        </a>`;
     container.appendChild(card);
 
+    // загружаем картинку после добавления в DOM
+    const titleSlug = a.title.replace(/\s+/g,'_');
+    const imgUrl = `articles/images/${titleSlug}.jpg`;
     const img = new Image();
     img.src = imgUrl;
-    img.onload = ()=>{cardImg.style.backgroundImage=`url('${imgUrl}')`; cardImg.textContent='';};
+    img.onload = () => {
+        card.querySelector('.card-img').style.backgroundImage = `url('${imgUrl}')`;
+        card.querySelector('.card-img').textContent = '';
+    };
     img.onerror = ()=>{};
 });
 
-// остальные статьи (мини-карточки)
+// остальные статьи (мини, с ссылками)
 const others = data.slice(9);
 others.forEach(a=>{
     const mini = document.createElement('div');
@@ -134,19 +128,6 @@ others.forEach(a=>{
     otherContainer.appendChild(mini);
 });
 
-
-const img = new Image();
-img.src = imgUrl;
-img.onload = () => {
-    cardImg.style.backgroundImage = `url('${imgUrl}')`;
-    cardImg.textContent = '';
-};
-img.onerror = () => {
-    // если нет картинки, оставляем рандомный цвет и иконку
-
-
-    
-};
 // плавная прокрутка
 document.getElementById('viewAllBtn').addEventListener('click',()=>{otherContainer.scrollIntoView({behavior:'smooth'});});
 document.getElementById('menuArticles').addEventListener('click',()=>{otherContainer.scrollIntoView({behavior:'smooth'});});
@@ -154,5 +135,3 @@ document.getElementById('menuArticles').addEventListener('click',()=>{otherConta
 
 </body>
 </html>
-
-
