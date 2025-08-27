@@ -7,176 +7,41 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Merriweather:wght@700&display=swap" rel="stylesheet">
 <style>
 body {
-    margin: 0;
-    font-family: "Inter", sans-serif;
-    background-color: #f5f5f5;
-    color: #1a2a6c;
-    line-height: 1.6;
+    margin:0; font-family:"Inter", sans-serif; background:#f5f5f5; color:#1a2a6c; line-height:1.6;
 }
 h1,h2,h3 { margin:0; }
-h1 { font-family: 'Merriweather', serif; font-weight:700; }
-a { text-decoration: none; color: inherit; cursor:pointer; }
+h1 { font-family:'Merriweather', serif; font-weight:700; }
+a { text-decoration:none; color: inherit; cursor:pointer; }
 
 /* Header */
-header {
-    background-color: #ffffff;
-    padding: 1.5rem 1rem;
-    text-align: center;
-}
-header h1 {
-    font-size: 2.4rem;
-    color: #1a2a6c;
-    letter-spacing: 1px;
-}
-nav {
-    margin-top: 0.5rem;
-}
-nav a {
-    position: relative;
-    display: inline-block;
-    margin: 0 1rem;
-    font-size: 0.95rem;
-    font-weight: 600;
-    color: #1a2a6c;
-    padding-bottom: 2px;
-}
-nav a::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 0;              
-    height: 40%;           
-    background-color: rgba(168, 213, 162, 0.5); 
-    transition: width 0.3s ease;
-}
-nav a:hover::after {
-    width: 100%;
-}
+header { background:#fff; padding:1.5rem 1rem; text-align:center; }
+nav { margin-top:0.5rem; }
+nav a { margin:0 1rem; font-weight:600; cursor:pointer; }
 
 /* Hero */
-.hero {
-    padding: 2rem 1rem;
-    text-align: center;
-    background-color: #1a2a6c;
-}
-.hero h2 { font-size: 1.8rem; color: #f9f9f9; margin-bottom: 1rem; font-family:'Merriweather', serif; }
-.hero p { max-width: 700px; margin: 0 auto; font-size: 1.05rem; color: #dce0f0; }
-.view-all-btn {
-    margin-top: 1.5rem;
-    display: inline-block;
-    padding: 0.7rem 1.5rem;
-    background-color: #f9f9f9;
-    color: #1a2a6c;
-    font-weight: 600;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background 0.3s, color 0.3s;
-}
-.view-all-btn:hover {
-    background-color: #1a2a6c;
-    color: #f9f9f9;
-}
+.hero { padding:2rem 1rem; text-align:center; background-color: #1a2a6c; }
+.hero h2 { font-size:1.8rem; color:#f9f9f9; margin-bottom:1rem; font-family:'Merriweather', serif; }
+.hero p { max-width:700px; margin:0 auto; font-size:1.05rem; color:#dce0f0; }
+.view-all-btn { margin-top:1.5rem; display:inline-block; padding:0.7rem 1.5rem; background:#f9f9f9; color:#1a2a6c; font-weight:600; border-radius:5px; cursor:pointer; transition:0.3s;}
+.view-all-btn:hover { background:#1a2a6c; color:#f9f9f9; }
 
-/* Articles */
-.articles {
-    display: grid;
-    grid-template-columns: repeat(3,1fr);
-    gap: 1.5rem;
-    max-width:1200px;
-    margin:2rem auto;
-    padding:0 1rem;
-}
-@media(max-width:768px){.articles{grid-template-columns:1fr;}}
+/* Articles grid */
+.articles { display:grid; grid-template-columns:repeat(auto-fill,minmax(250px,1fr)); gap:1rem; max-width:1200px; margin:2rem auto; padding:0 1rem; }
 .card {
-    background-color: #ffffff;
-    display: flex;
-    flex-direction: column;
-    border-radius: 0;
-    opacity: 0;               
-    transform: translateY(20px); 
-    transition: transform 0.6s ease, opacity 0.6s ease, box-shadow 0.3s ease, background 0.3s ease;
+    background:#fff; display:flex; flex-direction:column; border-radius:0; height:250px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-.card.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-.card:hover {
-    box-shadow: 0 15px 35px rgba(0,0,0,0.15);
-    background: linear-gradient(180deg, #ffffff 0%, #f0f4ff 100%);
-    transform: translateY(-6px);
-}
-.card-img {
-    height:160px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-weight:bold;
-    color:#1a2a6c;
-    font-size:3rem;
-    border-bottom:1px solid #d0d4e0;
-}
-.card-content {
-    padding:1rem;
-}
-.card-content h3 { font-size:1.2rem; color:#1a2a6c; margin-bottom:0.5rem; font-family:'Merriweather', serif; }
-.card-content p { font-size:0.95rem; color:#1a2a6c; }
-
-/* Other articles as simple blocks */
-.all-articles {
-    max-width:1200px;
-    margin:2rem auto;
-    padding:1rem;
-    font-size:0.95rem;
-}
-.other-links {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 12px;
-    margin-top: 0.5rem;
-}
-.other-card {
-    display: flex;
-    align-items: center;
-    padding: 8px 12px;
-    border-radius: 0;
-    font-size: 0.9rem;
-    background-color: #ffffff;
-    gap:10px;
-}
-.other-card .icon {
-    width: 50px;
-    height: 50px;
-    background-color: #e6f0ff;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-weight:bold;
-    color:#1a2a6c;
-    border-radius:0;
-}
+.card:hover { transform: translateY(-4px); box-shadow:0 10px 20px rgba(0,0,0,0.15); }
+.card-img { flex:1; display:flex; align-items:center; justify-content:center; font-size:3rem; border-bottom:1px solid #d0d4e0; }
+.card-content { padding:0.8rem; }
+.card-content h3 { font-size:1.1rem; font-family:'Merriweather', serif; margin-bottom:0.3rem; }
+.card-content p { font-size:0.9rem; }
 
 /* Ad Banner */
-.ad-banner {
-    max-width:1200px;
-    margin:2rem auto;
-    padding:1.5rem;
-    text-align:center;
-    background-color:#ffffff;
-    border:1px dashed #cccccc;
-    font-style:italic;
-    color:#1a2a6c;
-}
+.ad-banner { max-width:1200px; margin:2rem auto; padding:1.5rem; text-align:center; background:#fff; border:1px dashed #ccc; font-style:italic; color:#1a2a6c; }
 
 /* Footer */
-footer {
-    background-color:#ffffff;
-    padding:1.5rem;
-    text-align:center;
-    font-size:0.9rem;
-    color:#1a2a6c;
-    border-top:1px solid #cccccc;
-}
+footer { background:#fff; padding:1.5rem; text-align:center; border-top:1px solid #ccc; font-size:0.9rem; }
 </style>
 </head>
 <body>
@@ -184,7 +49,7 @@ footer {
 <header>
 <h1>The Settlenomics Review</h1>
 <nav>
-    <a href="#">Home</a>
+    <a href="index.html">Home</a>
     <a id="menuArticles">Articles</a>
     <a href="about.html">About</a>
     <a href="contact.html">Contact</a>
@@ -199,14 +64,7 @@ footer {
 
 <section class="articles" id="articles"></section>
 
-<section class="all-articles" id="all-articles">
-  <strong>Other Articles:</strong>
-  <div id="other-links" class="other-links"></div>
-</section>
-
-<div class="ad-banner">
-[ Advertisement Space ]
-</div>
+<div class="ad-banner">[ Advertisement Space ]</div>
 
 <footer>
 &copy; 2025 The Settlenomics Review — All Rights Reserved
@@ -230,11 +88,7 @@ footer {
 </script>
 
 <script>
-const container = document.getElementById('articles');
-const otherContainer = document.getElementById('other-links');
-const data = JSON.parse(document.getElementById('articles-data').textContent);
-
-// функции генерации цвета и иконки
+// Генерация цвета и иконки
 function getRandomColor() {
     const colors = ['#FFD700','#87CEEB','#FFA07A','#90EE90','#FFB6C1','#8A2BE2','#00CED1','#FF8C00','#20B2AA'];
     return colors[Math.floor(Math.random() * colors.length)];
@@ -244,10 +98,28 @@ function getRandomIcon() {
     return icons[Math.floor(Math.random() * icons.length)];
 }
 
-// последние 9 статей с цветными блоками и иконкой
+const container = document.getElementById('articles');
+const data = JSON.parse(document.getElementById('articles-data').textContent);
+
+// последние 9 статей: заглушки + картинка по title.html
 const latest = data.slice(0,9);
 latest.forEach(a=>{
-    const card=document.createElement('div');
+    const card = document.createElement('div');
+    card.className='card';
+    card.innerHTML=`
+        <a href="${a.title.replace(/\s+/g,'_')}.html" style="color:inherit; text-decoration:none;">
+        <div class="card-img" style="background-color:${getRandomColor()};">${getRandomIcon()}</div>
+        <div class="card-content">
+            <h3>${a.title}</h3>
+            <p>${a.text}</p>
+        </div></a>`;
+    container.appendChild(card);
+});
+
+// остальные статьи: также цветные блоки, но без ссылки на картинку
+const others = data.slice(9);
+others.forEach(a=>{
+    const card = document.createElement('div');
     card.className='card';
     card.innerHTML=`
         <div class="card-img" style="background-color:${getRandomColor()};">${getRandomIcon()}</div>
@@ -258,34 +130,23 @@ latest.forEach(a=>{
     container.appendChild(card);
 });
 
-// остальные статьи как простые блоки с иконкой
-const others = data.slice(9);
-others.forEach(a=>{
-    const card = document.createElement('div');
-    card.className='other-card';
-    card.innerHTML = `<div class="icon">📰</div><span>${a.title}</span>`;
-    otherContainer.appendChild(card);
-});
-
-// эффект появления при скролле для последних 9
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
+// Эффект появления последних 9 карточек
+const observer = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
         if(entry.isIntersecting){
             entry.target.classList.add('visible');
             observer.unobserve(entry.target);
         }
     });
-}, { threshold: 0.1 });
-document.querySelectorAll('.card').forEach(card => observer.observe(card));
+},{threshold:0.1});
+document.querySelectorAll('.card').forEach(card=>observer.observe(card));
 
-// плавная прокрутка по кнопке View All Articles
+// Плавная прокрутка
 document.getElementById('viewAllBtn').addEventListener('click', ()=>{
-    document.getElementById('all-articles').scrollIntoView({ behavior: 'smooth' });
+    container.scrollIntoView({behavior:'smooth'});
 });
-
-// пункт меню Articles скроллит к последним 9 карточкам
 document.getElementById('menuArticles').addEventListener('click', ()=>{
-    document.getElementById('articles').scrollIntoView({ behavior: 'smooth' });
+    container.scrollIntoView({behavior:'smooth'});
 });
 </script>
 
