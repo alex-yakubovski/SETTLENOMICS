@@ -134,6 +134,19 @@ others.forEach(a=>{
     otherContainer.appendChild(mini);
 });
 
+
+const img = new Image();
+img.src = imgUrl;
+img.onload = () => {
+    cardImg.style.backgroundImage = `url('${imgUrl}')`;
+    cardImg.textContent = '';
+};
+img.onerror = () => {
+    // если нет картинки, оставляем рандомный цвет и иконку
+
+
+    
+};
 // плавная прокрутка
 document.getElementById('viewAllBtn').addEventListener('click',()=>{otherContainer.scrollIntoView({behavior:'smooth'});});
 document.getElementById('menuArticles').addEventListener('click',()=>{otherContainer.scrollIntoView({behavior:'smooth'});});
