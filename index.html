@@ -23,7 +23,8 @@ nav a:hover::after{width:100%;}
 .view-all-btn{margin-top:1.5rem;display:inline-block;padding:0.7rem 1.5rem;background:#f9f9f9;color:#1a2a6c;font-weight:600;border-radius:5px;cursor:pointer;transition:0.3s;}
 .view-all-btn:hover{background:#1a2a6c;color:#f9f9f9;}
 /* Large Articles */
-.articles{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:1rem;max-width:1200px;margin:2rem auto;padding:0 1rem;}
+.articles{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;max-width:1200px;margin:2rem auto;padding:0 1rem;}
+@media(max-width:768px){.articles{grid-template-columns:1fr;}}
 .card{background:#fff;display:flex;flex-direction:column;border-radius:0;height:250px;transition:transform 0.3s ease,box-shadow 0.3s ease;}
 .card:hover{transform: translateY(-4px);box-shadow:0 10px 20px rgba(0,0,0,0.15);}
 .card-img{flex:1;display:flex;align-items:center;justify-content:center;font-size:3rem;border-bottom:1px solid #d0d4e0;background-size:cover;background-position:center;}
@@ -32,7 +33,8 @@ nav a:hover::after{width:100%;}
 .card-content p{font-size:0.9rem;}
 /* Mini Articles */
 .other-articles{display:flex;flex-wrap:wrap;gap:0.5rem;max-width:1200px;margin:1rem auto;padding:0 1rem;}
-.mini-card{display:flex;align-items:center;gap:0.5rem;padding:0.5rem 0.8rem;background:#fff;border-radius:4px;font-size:0.9rem;cursor:default;}
+.mini-card{display:flex;align-items:center;gap:0.5rem;padding:0.5rem 0.8rem;background:#fff;border-radius:4px;font-size:0.9rem;}
+.mini-card a{text-decoration:none;color:inherit;display:flex;align-items:center;gap:0.5rem;width:100%;}
 .mini-icon{width:24px;height:24px;display:flex;align-items:center;justify-content:center;border-radius:4px;font-size:1rem;color:#fff;}
 /* Ad Banner */
 .ad-banner{max-width:1200px;margin:2rem auto;padding:1.5rem;text-align:center;background:#fff;border:1px dashed #ccc;font-style:italic;color:#1a2a6c;}
@@ -89,17 +91,17 @@ const data = JSON.parse(document.getElementById('articles-data').textContent);
 const container = document.getElementById('articles');
 const otherContainer = document.getElementById('otherArticles');
 
-// последние 9
+// последние 9 (большие карточки)
 const latest = data.slice(0,9);
 latest.forEach(a=>{
     const card = document.createElement('div');
     card.className='card';
     const titleSlug = a.title.replace(/\s+/g,'_');
-    const imgUrl = `images/${titleSlug}.jpg`; // путь к реальной картинке
+    const imgUrl = `images/${titleSlug}.jpg`;
     const img = new Image();
     img.src = imgUrl;
     img.onload = ()=> {card.querySelector('.card-img').style.backgroundImage=`url('${imgUrl}')`; card.querySelector('.card-img').textContent='';}
-    img.onerror = ()=>{}; // если нет картинки, оставить заглушку
+    img.onerror = ()=>{};
     card.innerHTML=`
         <a href="${titleSlug}.html" style="color:inherit;text-decoration:none;">
         <div class="card-img" style="background-color:${getRandomColor()};">${getRandomIcon()}</div>
@@ -110,12 +112,13 @@ latest.forEach(a=>{
     container.appendChild(card);
 });
 
-// остальные статьи (мини)
+// остальные статьи (мини, с ссылками)
 const others = data.slice(9);
 others.forEach(a=>{
     const mini = document.createElement('div');
     mini.className='mini-card';
-    mini.innerHTML=`<div class="mini-icon" style="background:${getRandomColor()};">${getRandomIcon()}</div>${a.title}`;
+    const titleSlug = a.title.replace(/\s+/g,'_');
+    mini.innerHTML=`<a href="${titleSlug}.html"><div class="mini-icon" style="background:${getRandomColor()};">${getRandomIcon()}</div>${a.title}</a>`;
     otherContainer.appendChild(mini);
 });
 
