@@ -40,6 +40,7 @@ nav a {
     color: #1a2a6c;
     padding-bottom: 2px;
     overflow: hidden;
+    cursor: pointer;
 }
 nav a::after {
     content: "";
@@ -124,7 +125,7 @@ nav a:hover::after {
 .card-content h3 { font-size:1.2rem; color:#1a2a6c; margin-bottom:0.5rem; font-family:'Merriweather', serif; }
 .card-content p { font-size:0.95rem; color:#1a2a6c; }
 
-/* Other articles as tags */
+/* Other articles as mini-cards */
 .all-articles {
     max-width:1200px;
     margin:2rem auto;
@@ -132,24 +133,37 @@ nav a:hover::after {
     font-size:0.95rem;
 }
 .other-links {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 12px;
     margin-top: 0.5rem;
 }
-.other-links a {
-    display: inline-block;
-    padding: 6px 12px;
-    background-color: #e6f0ff;
-    color: #1a2a6c;
-    border-radius: 20px;
+.other-card {
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    padding: 8px 12px;
+    border-radius: 10px;
+    gap: 10px;
     font-size: 0.9rem;
+    cursor: pointer;
     transition: background 0.3s, transform 0.3s;
 }
-.other-links a:hover {
+.other-card:hover {
     background-color: #1a2a6c;
     color: #f9f9f9;
     transform: translateY(-2px);
+}
+.other-card .icon {
+    width: 30px;
+    height: 30px;
+    background-color: #e6f0ff;
+    border-radius: 50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:bold;
+    color:#1a2a6c;
 }
 
 /* Ad Banner */
@@ -181,7 +195,7 @@ footer {
 <h1>The Settlenomics Review</h1>
 <nav>
     <a href="#">Home</a>
-    <a href="#">Articles</a>
+    <a id="menuArticles">Articles</a>
     <a href="#">About</a>
     <a href="#">Contact</a>
 </nav>
@@ -244,13 +258,14 @@ latest.forEach(a=>{
     container.appendChild(card);
 });
 
-// остальные статьи как красивые теги
+// остальные статьи как мини-карточки
 const others = data.slice(9);
 others.forEach(a=>{
-    const link = document.createElement('a');
-    link.href="#"; // сюда можно поставить ссылку на отдельную страницу статьи
-    link.textContent = a.title;
-    otherContainer.appendChild(link);
+    const card = document.createElement('a');
+    card.className='other-card';
+    card.href="#"; 
+    card.innerHTML = `<div class="icon">📄</div><span>${a.title}</span>`;
+    otherContainer.appendChild(card);
 });
 
 // эффект появления при скролле
@@ -268,6 +283,11 @@ document.querySelectorAll('.card').forEach(card => observer.observe(card));
 // плавная прокрутка по кнопке View All Articles
 document.getElementById('viewAllBtn').addEventListener('click', ()=>{
     document.getElementById('all-articles').scrollIntoView({ behavior: 'smooth' });
+});
+
+// пункт меню Articles скроллит к последним 9 карточкам
+document.getElementById('menuArticles').addEventListener('click', ()=>{
+    document.getElementById('articles').scrollIntoView({ behavior: 'smooth' });
 });
 </script>
 
