@@ -87,49 +87,74 @@ footer{background:#fff;padding:1.5rem;text-align:center;border-top:1px solid #cc
 </script>
 
 <script>
-// Рандомный цвет и иконка
-function getRandomColor() {const colors=['#FFD700','#87CEEB','#FFA07A','#90EE90','#FFB6C1','#8A2BE2','#00CED1','#FF8C00','#20B2AA'];return colors[Math.floor(Math.random()*colors.length)];}
-function getRandomIcon() {const icons=['🏙️','🌍','🏠','🏢','🛣️','🧭','📈','📊','💼'];return icons[Math.floor(Math.random()*icons.length)];}
+// Рандомный цвет и иконка для заглушки
+function getRandomColor() {
+    const colors = ['#FFD700','#87CEEB','#FFA07A','#90EE90','#FFB6C1','#8A2BE2','#00CED1','#FF8C00','#20B2AA'];
+    return colors[Math.floor(Math.random() * colors.length)];
+}
+function getRandomIcon() {
+    const icons = ['🏙️','🌍','🏠','🏢','🛣️','🧭','📈','📊','💼'];
+    return icons[Math.floor(Math.random() * icons.length)];
+}
 
+// Получаем данные из JSON
 const data = JSON.parse(document.getElementById('articles-data').textContent);
 const container = document.getElementById('articles');
 const otherContainer = document.getElementById('otherArticles');
 
 // последние 9 (большие карточки)
-data.latest.forEach(a=>{
+const latest = data.slice(0, 9);
+latest.forEach(a => {
     const card = document.createElement('div');
-    card.className='card';
-    card.innerHTML=`
-        <a href="articles/${a.file}" style="color:inherit;text-decoration:none;">
+    card.className = 'card';
+
+    // Заглушка с цветным боксом и иконкой
+    const cardHtml = `
+        <a href="articles/${a.title.replace(/\s+/g,'_')}.html" style="color:inherit;text-decoration:none;">
             <div class="card-img" style="background-color:${getRandomColor()};">${getRandomIcon()}</div>
             <div class="card-content">
                 <h3>${a.title}</h3>
                 <p>${a.text}</p>
             </div>
         </a>`;
+    card.innerHTML = cardHtml;
     container.appendChild(card);
 
-    // подгрузка изображения
+    // Подгрузка реальной картинки по названию статьи
+    const titleSlug = a.title.replace(/\s+/g,'_');
+    const imgUrl = `articles/images/${titleSlug}.jpg?v=${Date.now()}`; // добавляем версию для обхода кэша
     const img = new Image();
-    img.src = a.image;
+    img.src = imgUrl;
     img.onload = () => {
-        card.querySelector('.card-img').style.backgroundImage = `url('${a.image}')`;
-        card.querySelector('.card-img').textContent = '';
+        const imgDiv = card.querySelector('.card-img');
+        imgDiv.style.backgroundImage = `url('${imgUrl}')`;
+        imgDiv.textContent = ''; // убираем иконку
     };
-    img.onerror = ()=>{};
+    img.onerror = () => {
+        // ничего не делаем, оставляем заглушку
+    };
 });
 
-// остальные статьи (мини, с ссылками)
-data.others.forEach(a=>{
+// остальные статьи (мини-карточки)
+const others = data.slice(9);
+others.forEach(a => {
     const mini = document.createElement('div');
-    mini.className='mini-card';
-    mini.innerHTML=`<a href="articles/${a.file}"><div class="mini-icon" style="background:${getRandomColor()};">${getRandomIcon()}</div>${a.title}</a>`;
+    mini.className = 'mini-card';
+    const titleSlug = a.title.replace(/\s+/g,'_');
+    mini.innerHTML = `<a href="articles/${titleSlug}.html">
+        <div class="mini-icon" style="background:${getRandomColor()};">${getRandomIcon()}</div>
+        ${a.title}
+    </a>`;
     otherContainer.appendChild(mini);
 });
 
-// плавная прокрутка
-document.getElementById('viewAllBtn').addEventListener('click',()=>{otherContainer.scrollIntoView({behavior:'smooth'});});
-document.getElementById('menuArticles').addEventListener('click',()=>{otherContainer.scrollIntoView({behavior:'smooth'});});
+// Плавная прокрутка
+document.getElementById('viewAllBtn').addEventListener('click', () => {
+    otherContainer.scrollIntoView({behavior:'smooth'});
+});
+document.getElementById('menuArticles').addEventListener('click', () => {
+    otherContainer.scrollIntoView({behavior:'smooth'});
+});
 </script>
 
 </body>
