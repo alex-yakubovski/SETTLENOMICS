@@ -66,96 +66,79 @@ footer{background:#fff;padding:1.5rem;text-align:center;border-top:1px solid #cc
 <footer>&copy; 2025 The Settlenomics Review — All Rights Reserved</footer>
 
 <script type="application/json" id="articles-data">
-{
-  "latest":[
-    {"title":"Urban Growth Trends","file":"Urban_Growth_Trends.html","image":"articles/images/Urban_Growth_Trends.jpg","text":"Examining rapid expansion of metropolitan areas."},
-    {"title":"Migration Patterns","file":"Migration.html","image":"articles/images/migration.jpg","text":"How cross-border movements shape economies."},
-    {"title":"Housing Market Shifts","file":"articles/Migration.html","image":"articles/images/migration.jpg","text":"Impact of remote work on housing demand."},
-    {"title":"Tax Policy Impacts","file":"Tax_Policy_Impacts.html","image":"articles/images/Tax_Policy_Impacts.jpg","text":"Fiscal incentives for attracting residents."},
-    {"title":"Cultural Integration","file":"Cultural_Integration.html","image":"articles/images/Cultural_Integration.jpg","text":"Role of language and tradition in cities."},
-    {"title":"Infrastructure Investments","file":"Infrastructure_Investments.html","image":"articles/images/Infrastructure_Investments.jpg","text":"Smart city technologies reshaping living spaces."},
-    {"title":"Climate Relocation","file":"Climate_Relocation.html","image":"articles/images/Climate_Relocation.jpg","text":"Predicting settlement shifts due to climate."},
-    {"title":"Business Ecosystems","file":"Business_Ecosystems.html","image":"articles/images/Business_Ecosystems.jpg","text":"Entrepreneurship hubs in post-industrial cities."},
-    {"title":"Global Mobility Future","file":"Global_Mobility_Future.html","image":"articles/images/Global_Mobility_Future.jpg","text":"Visions for a borderless workforce."}
-  ],
-  "others":[
-    {"title":"Urban Policy Case Studies","file":"Urban_Policy_Case_Studies.html"},
-    {"title":"Community Engagement Models","file":"Community_Engagement_Models.html"},
-    {"title":"Public Transport Innovations","file":"Public_Transport_Innovations.html"}
-  ]
-}
+[
+    {"title":"Urban Growth Trends","text":"Examining rapid expansion of metropolitan areas."},
+    {"title":"Migration Patterns","text":"How cross-border movements shape economies."},
+    {"title":"Housing Market Shifts","text":"Impact of remote work on housing demand."},
+    {"title":"Tax Policy Impacts","text":"Fiscal incentives for attracting residents."},
+    {"title":"Cultural Integration","text":"Role of language and tradition in cities."},
+    {"title":"Infrastructure Investments","text":"Smart city technologies reshaping living spaces."},
+    {"title":"Climate Relocation","text":"Predicting settlement shifts due to climate."},
+    {"title":"Business Ecosystems","text":"Entrepreneurship hubs in post-industrial cities."},
+    {"title":"Global Mobility Future","text":"Visions for a borderless workforce."},
+    {"title":"Urban Policy Case Studies","text":"Analyzing effective urban planning strategies."},
+    {"title":"Community Engagement Models","text":"How citizens shape settlements."},
+    {"title":"Public Transport Innovations","text":"New approaches to mobility in cities."}
+]
 </script>
 
 <script>
-// Рандомный цвет и иконка для заглушки
-function getRandomColor() {
-    const colors = ['#FFD700','#87CEEB','#FFA07A','#90EE90','#FFB6C1','#8A2BE2','#00CED1','#FF8C00','#20B2AA'];
-    return colors[Math.floor(Math.random() * colors.length)];
-}
-function getRandomIcon() {
-    const icons = ['🏙️','🌍','🏠','🏢','🛣️','🧭','📈','📊','💼'];
-    return icons[Math.floor(Math.random() * icons.length)];
-}
+// Рандомный цвет и иконка
+function getRandomColor() {const colors=['#FFD700','#87CEEB','#FFA07A','#90EE90','#FFB6C1','#8A2BE2','#00CED1','#FF8C00','#20B2AA'];return colors[Math.floor(Math.random()*colors.length)];}
+function getRandomIcon() {const icons=['🏙️','🌍','🏠','🏢','🛣️','🧭','📈','📊','💼'];return icons[Math.floor(Math.random()*icons.length)];}
 
-// Получаем данные из JSON
 const data = JSON.parse(document.getElementById('articles-data').textContent);
 const container = document.getElementById('articles');
 const otherContainer = document.getElementById('otherArticles');
 
 // последние 9 (большие карточки)
-const latest = data.slice(0, 9);
-latest.forEach(a => {
+const latest = data.slice(0,9);
+latest.forEach(a=>{
     const card = document.createElement('div');
-    card.className = 'card';
+    card.className='card';
+    const titleSlug = a.title.replace(/\s+/g,'_');
+    const imgUrl = `articles/images/${titleSlug}.jpg`;
 
-    // Заглушка с цветным боксом и иконкой
-    const cardHtml = `
-        <a href="articles/${a.title.replace(/\s+/g,'_')}.html" style="color:inherit;text-decoration:none;">
-            <div class="card-img" style="background-color:${getRandomColor()};">${getRandomIcon()}</div>
-            <div class="card-content">
-                <h3>${a.title}</h3>
-                <p>${a.text}</p>
-            </div>
-        </a>`;
-    card.innerHTML = cardHtml;
+    const link = document.createElement('a');
+    link.href = `articles/${titleSlug}.html`;
+    link.style.color = 'inherit';
+    link.style.textDecoration = 'none';
+
+    const cardImg = document.createElement('div');
+    cardImg.className='card-img';
+    cardImg.style.backgroundColor = getRandomColor();
+    cardImg.textContent = getRandomIcon();
+
+    const cardContent = document.createElement('div');
+    cardContent.className='card-content';
+    cardContent.innerHTML = `<h3>${a.title}</h3><p>${a.text}</p>`;
+
+    link.appendChild(cardImg);
+    link.appendChild(cardContent);
+    card.appendChild(link);
     container.appendChild(card);
 
-    // Подгрузка реальной картинки по названию статьи
-    const titleSlug = a.title.replace(/\s+/g,'_');
-    const imgUrl = `articles/images/${titleSlug}.jpg?v=${Date.now()}`; // добавляем версию для обхода кэша
     const img = new Image();
     img.src = imgUrl;
-    img.onload = () => {
-        const imgDiv = card.querySelector('.card-img');
-        imgDiv.style.backgroundImage = `url('${imgUrl}')`;
-        imgDiv.textContent = ''; // убираем иконку
-    };
-    img.onerror = () => {
-        // ничего не делаем, оставляем заглушку
-    };
+    img.onload = ()=>{cardImg.style.backgroundImage=`url('${imgUrl}')`; cardImg.textContent='';};
+    img.onerror = ()=>{};
 });
 
 // остальные статьи (мини-карточки)
 const others = data.slice(9);
-others.forEach(a => {
+others.forEach(a=>{
     const mini = document.createElement('div');
-    mini.className = 'mini-card';
+    mini.className='mini-card';
     const titleSlug = a.title.replace(/\s+/g,'_');
-    mini.innerHTML = `<a href="articles/${titleSlug}.html">
-        <div class="mini-icon" style="background:${getRandomColor()};">${getRandomIcon()}</div>
-        ${a.title}
-    </a>`;
+    mini.innerHTML=`<a href="articles/${titleSlug}.html"><div class="mini-icon" style="background:${getRandomColor()};">${getRandomIcon()}</div>${a.title}</a>`;
     otherContainer.appendChild(mini);
 });
 
-// Плавная прокрутка
-document.getElementById('viewAllBtn').addEventListener('click', () => {
-    otherContainer.scrollIntoView({behavior:'smooth'});
-});
-document.getElementById('menuArticles').addEventListener('click', () => {
-    otherContainer.scrollIntoView({behavior:'smooth'});
-});
+// плавная прокрутка
+document.getElementById('viewAllBtn').addEventListener('click',()=>{otherContainer.scrollIntoView({behavior:'smooth'});});
+document.getElementById('menuArticles').addEventListener('click',()=>{otherContainer.scrollIntoView({behavior:'smooth'});});
 </script>
 
 </body>
 </html>
+``
